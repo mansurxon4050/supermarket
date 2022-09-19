@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductItemResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class ProductController extends Controller
     public function item(Request $request){
 
         $product = Product::where('id',$request->id)->get();
-        return response($product);
+        return response(ProductItemResource::collection($product));
     }
 
 
