@@ -26,6 +26,7 @@ Route::post('update_password',[AuthController::class,'update_password']);
 Route::post('upload',[ImageController::class,'upload']);
 
 Route::get('products',[ProductController::class,'index']);
+Route::get('item',[ProductController::class,'item']);
 
 Route::get('banner',[HomeController::class,'index']);
 Route::get('star',[HomeController::class,'star']);
