@@ -13,12 +13,15 @@ class ProductController extends Controller
     public function index(){
 
         $product = Product::paginate(5);
-        return ProductResource::collection($product);
+      //  return ProductResource::collection($product);
     }
     public function item(Request $request){
 
         $product = Product::where('id',$request->id)->get();
-        return response(ProductItemResource::collection($product));
+
+        return response()->json($product);
+
+        //return response(ProductItemResource::collection($product));
     }
 
 
