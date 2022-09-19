@@ -17,6 +17,7 @@ class HomeResource extends JsonResource
     {
     $banners=Banner::get('image');
         return [
+            'id'=>$this->id,
             'name'=>$this->name,
             'image'=>$this->image,
             'price'=>$this->price,
