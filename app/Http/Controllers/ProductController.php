@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function item(Request $request){
 
         $product = Product::where('id',$request->id)->get();
-        return response([ 'data' => $product],200);
+        return response($product);
     }
 
 
