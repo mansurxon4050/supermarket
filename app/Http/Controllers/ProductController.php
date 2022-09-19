@@ -17,10 +17,7 @@ class ProductController extends Controller
     public function item(Request $request){
 
         $product = Product::where('id',$request->id)->get();
-        return response()->json([
-            'success' => true,
-            'data' => $product
-        ]);
+        return response([ 'data' => $product],200);
     }
 
 
