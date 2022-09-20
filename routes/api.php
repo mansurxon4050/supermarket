@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+/// register
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('update_check',[AuthController::class,'update_check']);
@@ -27,6 +28,7 @@ Route::post('upload',[ImageController::class,'upload']);
 
 Route::get('products',[ProductController::class,'index']);
 Route::get('item',[ProductController::class,'item']);
+Route::get('category',[ProductController::class,'category']);
 
 Route::get('banner',[HomeController::class,'index']);
 Route::get('star',[HomeController::class,'star']);
@@ -34,8 +36,8 @@ Route::get('star',[HomeController::class,'star']);
 
 Route::get('waters',[WaterController::class,'service']);
 
-Route::middleware('auth:sanctum')->group(function (){
 
+Route::middleware('auth:sanctum')->group(function (){
     Route::get('me',[AuthController::class,'user']);
     Route::post('logout',[AuthController::class,'logout']);
 
