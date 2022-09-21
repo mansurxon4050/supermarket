@@ -21,26 +21,26 @@ class ProductController extends Controller
             'data' => ProductItemResource::collection(
                 Product::where(['id' => $request->id])->get())
         ]);
-
     }
     public function category(){
         $Allcategory = Product::get('category');
+        $Newcat[]=["category"=>$Allcategory[0]->category];
+
         $arr_length = count($Allcategory);
-        $categories=[];
-        foreach ($Allcategory as $i => $iValue) {
-            for($j = $i+1; $j<$arr_length; $j++ ){
-                if($iValue->category!=$Allcategory[$j]->category){
-                    $categories[] = ["category"=> $iValue->category];
-                    break;
-                }
-                }
+        $newCatLength=count($Newcat);
+
+        for($i=1;$i<$arr_length;$i++){
+            for($j=0;$j<$newCatLength;$j++){
+
+            if($Newcat[$j]["category"]!== $Allcategory[$i]->category){
+                $Newcat[]=["category"=>$Allcategory[$i]->category];
+            }
+            }
         }
         return response()->json([
-        "success"=>true,
-        "data"=>$categories
+            'success' => true,
+            'data' => $Newcat
         ]);
 
     }
-
-
 }
