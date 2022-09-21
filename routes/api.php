@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
@@ -28,7 +29,7 @@ Route::post('upload',[ImageController::class,'upload']);
 
 Route::get('products',[ProductController::class,'index']);
 Route::get('item',[ProductController::class,'item']);
-Route::get('category',[ProductController::class,'category']);
+Route::get('category',[CategoryController::class,'index']);
 
 Route::get('banner',[HomeController::class,'index']);
 Route::get('star',[HomeController::class,'star']);
