@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index(Request $request){
 
-        $product = Product::where('category',$request->category)->paginate(5);
+        $product = Product::where('category',$request->category)->paginate();
         return ProductItemResource::collection($product);
     }
     public function item(Request $request){
