@@ -15,21 +15,10 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request) : Array
     {
-        $Allcategory = Product::get('category');
-        $Newcat[]=["category"=>$Allcategory[0]->category];
 
-        $arr_length = count($Allcategory);
-        $newCatLength=count($Newcat);
-
-        for($i=1;$i<$arr_length;$i++){
-            for($j=0;$j<$newCatLength;$j++){
-
-                if($Newcat[$j]["category"]!== $Allcategory[$i]->category){
-                    $Newcat[]=["category"=>$Allcategory[$i]->category];
-                }
-            }
-        }
         return [
+            "image"=>$this->image,
+            "name"=>$this->name
         ];
     }
 
