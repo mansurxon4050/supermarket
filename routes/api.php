@@ -27,16 +27,18 @@ Route::post('update_check',[AuthController::class,'update_check']);
 Route::post('update_password',[AuthController::class,'update_password']);
 Route::post('upload',[ImageController::class,'upload']);
 
-Route::get('products',[ProductController::class,'index']);
-Route::get('item',[ProductController::class,'item']);
+
+/// category
+Route::get('category/products',[ProductController::class,'index']);
 Route::get('category',[CategoryController::class,'index']);
 
+/// home
 Route::get('banner',[HomeController::class,'index']);
 Route::get('star',[HomeController::class,'star']);
+Route::get('item',[ProductController::class,'item']);
 
 
 Route::get('waters',[WaterController::class,'service']);
-
 
 Route::middleware('auth:sanctum')->group(function (){
     Route::get('me',[AuthController::class,'user']);
