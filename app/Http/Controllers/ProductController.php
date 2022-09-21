@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PaginationResource;
 use App\Http\Resources\ProductItemResource;
-use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
-    public function index(){
+    public function index(Request $request){
 
-        $product = Product::paginate(5);
+        $product = Product::where('category',$request->category)->paginate(5);
         return ProductItemResource::collection($product);
     }
     public function item(Request $request){
