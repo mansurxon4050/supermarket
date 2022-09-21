@@ -15,7 +15,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
+        $category=Category::all();
+=======
             $category=Category::all();
+>>>>>>> d31b6c9fb21a1b9bc16ae919b6c9b3ef709d825f
 
         return CategoryResource::collection($category);
 
