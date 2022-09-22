@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\PaginationResource;
 use App\Http\Resources\ProductItemResource;
+use App\Http\Resources\SearchResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -22,5 +21,16 @@ class ProductController extends Controller
             'data' => ProductItemResource::collection(
                 Product::where(['id' => $request->id])->get())
         ]);
+    }
+    public function search(Request $request){
+
+        $s=$request['search'];
+        $products=Product::where('name','like',"%$s%")
+            ->orWhere('description', 'like',"%$s%")
+            ->orWhere('category', 'like',"%$s%")
+            ->orWhere('info', 'like',"%$s%")->paginate();
+
+        return $products;
+
     }
 }

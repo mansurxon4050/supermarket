@@ -27,7 +27,6 @@ class ProductItemResource extends JsonResource
             'discount' => $this->discount,
             'discount_price' => $this->discount_price,
             'count' => $this->count,
-
         ];
     }
 }

@@ -9,12 +9,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
 
-
-        return Banner::get('image');
-
-    }  public function star(){
+    public function star(){
 
         $product = Product::where('star','>','0')->paginate();
 

@@ -20,12 +20,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-/// register
-Route::post('register',[AuthController::class,'register']);
-Route::post('login',[AuthController::class,'login']);
-Route::post('update_check',[AuthController::class,'update_check']);
-Route::post('update_password',[AuthController::class,'update_password']);
-Route::post('upload',[ImageController::class,'upload']);
 
 
 /// category
@@ -33,12 +27,22 @@ Route::get('category/products',[ProductController::class,'index']);
 Route::get('category',[CategoryController::class,'index']);
 
 /// home
-Route::get('banner',[HomeController::class,'index']);
 Route::get('star',[HomeController::class,'star']);
 Route::get('item',[ProductController::class,'item']);
 
+///search
+Route::get('search',[ProductController::class,'search']);
+
+
 
 Route::get('waters',[WaterController::class,'service']);
+
+/// register
+Route::post('register',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
+Route::post('update_check',[AuthController::class,'update_check']);
+Route::post('update_password',[AuthController::class,'update_password']);
+Route::post('upload',[ImageController::class,'upload']);
 
 Route::middleware('auth:sanctum')->group(function (){
     Route::get('me',[AuthController::class,'user']);
