@@ -34,6 +34,8 @@ Route::get('item',[ProductController::class,'item']);
 Route::get('search',[ProductController::class,'search']);
 Route::get('discount',[ProductController::class,'discount']);
 
+// person
+Route::get('news',[HomeController::class,'news']);
 
 
 Route::get('waters',[WaterController::class,'service']);
