@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductItemResource;
-use App\Http\Resources\SearchResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -31,6 +30,16 @@ class ProductController extends Controller
             ->orWhere('info', 'like',"%$s%")->paginate();
 
         return  ProductItemResource::collection($products);
+
+    }
+    public function discount(){
+
+        $products=Product::where('discount','!=', null)
+        ->orWhere('discount','>','0')->paginate();
+
+        return ProductItemResource::collection($products);
+
+
 
     }
 }

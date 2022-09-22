@@ -32,6 +32,7 @@ Route::get('item',[ProductController::class,'item']);
 
 ///search
 Route::get('search',[ProductController::class,'search']);
+Route::get('discount',[ProductController::class,'discount']);
 
 
 

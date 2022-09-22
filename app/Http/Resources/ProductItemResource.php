@@ -22,7 +22,7 @@ class ProductItemResource extends JsonResource
             'info' => $this->info,
             'description' => $this->description,
             'category' => $this->category,
-            'favorite' => $this->favorite,
+            'type' => $this->type,
             'price' => $this->price,
             'discount' => $this->discount,
             'discount_price' => $this->discount_price,
