@@ -34,8 +34,7 @@ class ProductController extends Controller
     }
     public function discount(){
 
-        $products=Product::where('discount','!=', null)
-        ->orWhere('discount','>','0')->paginate();
+        $products=Product::Where('discount','>','0')->paginate();
 
         return ProductItemResource::collection($products);
 
