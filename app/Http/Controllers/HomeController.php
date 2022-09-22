@@ -19,7 +19,7 @@ class HomeController extends Controller
     }
       public function news(){
 
-        $product = NewPaper::all()->paginate();
+        $product = NewPaper::all();
         return NewPaperResource::collection($product);
 
     }
