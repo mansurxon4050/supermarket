@@ -30,7 +30,7 @@ class ProductController extends Controller
             ->orWhere('category', 'like',"%$s%")
             ->orWhere('info', 'like',"%$s%")->paginate();
 
-        return $products;
+        return  ProductItemResource::collection($products);
 
     }
 }
