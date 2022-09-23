@@ -41,13 +41,17 @@ class AuthController extends Controller
     public function register(RegisterRequest $request){
 
         $user = User::create([
+
             'role_id'=>'2',
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'avatar'=>$request->input('avatar'),
             'phone_number'=>$request->input('phone_number'),
             'password'=>Hash::make($request->input('password')),
-
+            'history_cart'=>$request->input('history_cart'),
+            'favorite_product'=>$request->input('favorite_product'),
+            'chat'=>$request->input('chat'),
+            'lang'=>$request->input('lang'),
         ]);
         //$user->phone_number = $request->input('phone_number');
 
