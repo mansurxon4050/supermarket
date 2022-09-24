@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
@@ -40,43 +41,31 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request){
 
-        $user = User::create([
 
-            'role_id'=>'2',
-            'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
-            'avatar'=>$request->input('avatar'),
-            'phone_number'=>$request->input('phone_number'),
-            'password'=>Hash::make($request->input('password')),
-            'history_cart'=>$request->input('history_cart'),
-            'favorite_product'=>$request->input('favorite_product'),
-            'chat'=>$request->input('chat'),
-            'lang'=>$request->input('lang'),
-        ]);
-        //$user->phone_number = $request->input('phone_number');
+        try {
+            $data = $request->validated();
+            $data['password'] = Hash::make($data['password']);
+            $user = User::create($data);
+            $token =   $user->createToken('api_token')->plainTextToken;
+            $user->api_token = $token;
+            $user->remember_token = Str::random(60);
 
-        $token = $user->createToken('myapptoken')->plainTextToken;
-
-        $response = [
-            'user' => $user,
-            'token' => $token,
-        ];
-
-        return response($response, 200);
-
+            $user->save();
+            Auth::login($user);
+            return response()->json(['user' => auth()->user()]);
+        } catch (ValidationException $e) {
+            return response()->json(array_values($e->errors()));
+        }
     }
 
     public function login(Request $request){
-
 
         $fields = $request->validate([
             'email' => 'required|string',
             'password' => 'required|string ',
         ]);
-
         // Check email
         $user = User::where('email',$fields['email'] )->first();
-
         // Check passwords
         if(!$user || !Hash::check($fields['password'],$user->password)){
 

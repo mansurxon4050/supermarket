@@ -22,10 +22,10 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:users',
             'avatar'=>'required',
-            'phone_number'=>'required',
-            'password'=>'required',
+            'phone_number'=>'numeric|unique:users|min:9',
+            'password'=>'required|min:8',
             'password_confirm'=>'required|same:password',
         ];
     }
