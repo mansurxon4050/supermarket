@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
-    public function star(){
+    public function popular(){
 
         $product = Product::where('star','>','0')->paginate();
         return HomeResource::collection($product);

@@ -27,8 +27,10 @@ Route::get('category/products',[ProductController::class,'index']);
 Route::get('category',[CategoryController::class,'index']);
 
 /// home
-Route::get('star',[HomeController::class,'star']);
-Route::get('item',[ProductController::class,'item']);
+Route::get('product/popular',[HomeController::class,'popular']);
+Route::get('product/item',[ProductController::class,'item']);
+Route::get('product/star',[ProductController::class,'star']);
+Route::get('product/favorite',[UserController::class,'edit_favorite']);
 
 ///search
 Route::get('search',[ProductController::class,'search']);
