@@ -71,11 +71,11 @@ class AuthController extends Controller
             return response(['message' =>'Bad creds'],401);
         }
 
-       // $token = $user->createToken('myapptoken')->plainTextToken;
+        $token = $user->createToken('api_token')->plainTextToken;
 
         $response = [
             'user' => $user,
-         //   'token' => $token,
+            'token' => $token,
         ];
 
         return response($response, 201);
