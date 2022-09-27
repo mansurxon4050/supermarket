@@ -52,7 +52,7 @@ class AuthController extends Controller
 
             $user->save();
             Auth::login($user);
-            return response()->json(['user' => auth()->user()]);
+            return response()->json(['user' => auth()->user(),'api_token'=>$token]);
         } catch (ValidationException $e) {
             return response()->json(array_values($e->errors()));
         }
