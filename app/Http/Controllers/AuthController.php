@@ -49,7 +49,7 @@ class AuthController extends Controller
             $token =   $user->createToken('api_token')->plainTextToken;
             $user->api_token = $token;
             $user->remember_token = Str::random(60);
-
+///
             $user->save();
             Auth::login($user);
             return response()->json(['user' => auth()->user(),'api_token'=>$token]);
