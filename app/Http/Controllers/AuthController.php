@@ -66,7 +66,7 @@ class AuthController extends Controller
         ],Response::HTTP_UNAUTHORIZED);
 
         }
-
+        /** @var User $user */
         $user   =Auth::user();
 
         $token = $user->createToken('api_token')->plainTextToken;
