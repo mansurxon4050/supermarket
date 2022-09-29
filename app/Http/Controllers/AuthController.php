@@ -59,15 +59,17 @@ class AuthController extends Controller
 
     public function login(Request $request){
 
-        if(Auth::attempt($request->only('email','password')))
-        {
-        return  \response([
-        'error' =>'Invalid credentials!'
-        ],Response::HTTP_UNAUTHORIZED);
+        $fields = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string ',
+        ]);
+        // Check email
+        $user = User::where('email',$fields['email'] )->first();
+        // Check passwords
+        if(Hash::check($fields['password'],$user->password)){
 
+            return response(['message' =>'Bad creds'],401);
         }
-        /** @var User $user */
-        $user   =Auth::user();
 
         $token = $user->createToken('api_token')->plainTextToken;
 
