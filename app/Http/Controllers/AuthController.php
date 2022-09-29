@@ -68,7 +68,12 @@ class AuthController extends Controller
         // Check passwords
         if(!$user || !Hash::check($fields['password'],$user->password)){
 
-            return response(['message' =>'Bad creds'],401);
+            return response([
+            'user password' =>$user->password,
+            'message' =>!$user,
+            'Hash check' =>!Hash::check($fields['password']),
+            ],401);
+          //  return response(['message' =>'Bad creds'],401);
         }
 
         $token = $user->createToken('api_token')->plainTextToken;
