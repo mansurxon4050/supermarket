@@ -58,9 +58,14 @@ class UserController extends Controller
      */
     public function edit_favorite(Request $request)
     {
-        $user=User::find($request->id);
+        $user=User::insert(
+            ['id' => $request->id, 'name' => $request->name]
+        );
+
+
+        /*$user=User::find($request->id);
         $user->favorite_product +=['id'=> $request->product_id];
-        $user->save();
+        $user->save();*/
         return  $user;
     }
 
