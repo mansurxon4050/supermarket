@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use JsonException;
 
 class UserController extends Controller
 {
@@ -58,9 +59,13 @@ class UserController extends Controller
      */
     public function edit_favorite(Request $request)
     {
-        $user=User::insert(
-            ['id' => $request->id, 'name' => $request->name]
-        );
+        $user=User::find($request->id);
+
+        try {
+            $user->favorite_product = json_encode($request->get('name'), JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+        $user='errorrr';
+        }
 
 
         /*$user=User::find($request->id);
