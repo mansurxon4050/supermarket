@@ -63,7 +63,7 @@ class UserController extends Controller
 
 
 
-        return  typeOf($favorite);
+        return  gettype($favorite);
     }
 
     /**
