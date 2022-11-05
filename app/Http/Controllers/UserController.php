@@ -59,19 +59,10 @@ class UserController extends Controller
      */
     public function edit_favorite(Request $request)
     {
-        $user=User::find($request->id);
+        $favorite=User::find(0)->get('favorite');
+            
 
-        try {
-            $user->favorite_product = json_encode($request->get('name'), JSON_THROW_ON_ERROR);
-        } catch (JsonException $e) {
-        $user='errorrr';
-        }
-
-
-        /*$user=User::find($request->id);
-        $user->favorite_product +=['id'=> $request->product_id];
-        $user->save();*/
-        return  $user;
+        return  $favorite;
     }
 
     /**
