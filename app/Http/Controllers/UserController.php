@@ -61,10 +61,9 @@ class UserController extends Controller
     {
         $favorite=User::where('id',1)->get('favorite_product');
 
-        $array = array('foo' => 'bar');
 
-        $favorite  = array_add($array, 'key', 'value');
-        return  $favorite;
+
+        return  typeOf($favorite);
     }
 
     /**
