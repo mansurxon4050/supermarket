@@ -59,11 +59,11 @@ class UserController extends Controller
      */
     public function edit_favorite(Request $request)
     {
-        $favorite=User::where('id',1)->get('favorite_product');
+        $favorite=User::where('id',1)->get();
 
 
 
-        return  $favorite->toArray();
+        return  $favorite;
     }
 
     /**
