@@ -64,9 +64,9 @@ class UserController extends Controller
         $user->favorite_product=$arrays;
 
 
-        $old_array=$user->favorite_product;
+      /*  $old_array=$user->favorite_product;
 
-        $user->favorite_product=array_push( $old_array,$request->name);
+        $user->favorite_product=array_push( $old_array,$request->name);*/
         $user->save();
         return $user;
     }
