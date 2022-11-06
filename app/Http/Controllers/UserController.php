@@ -62,6 +62,8 @@ class UserController extends Controller
         $user=User::find(1);
         $arrays=array('olma','uzum','nok');
         $user->favorite_product=$arrays;
+        $user->favorite_product[] = $request->name;
+
         return $user;
     }
 
