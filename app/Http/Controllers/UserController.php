@@ -60,9 +60,13 @@ class UserController extends Controller
     public function edit_favorite(Request $request)
     {
         $user=User::find(1);
-        $arrays=array('olma','uzum','nok');
-        $user->favorite_product=$arrays;
-        $user->favorite_product[] = $request->name;
+     //   $arrays=array('olma','uzum','nok');
+
+        $array=$user->favorite_product;
+
+    //    $user->favorite_product=$arrays;
+
+        $user->favorite_product = array_push($array, 'key', 'value');
 
         return $user;
     }
