@@ -85,7 +85,7 @@ class UserController extends Controller
 
         foreach ($favorite as $item) {
 
-            $products=Product::Where('id', 'like',"%$item")->paginate();
+            $products=Product::Where('id', $item)->paginate();
 
             return  ProductItemResource::collection($products);
         }
