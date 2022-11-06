@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductItemResource;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use JsonException;
@@ -57,21 +59,38 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit_favorite(Request $request)
+    public function favorite_add(Request $request)
     {
+        // auth()->user();
         $user=User::find($request->id);
         if($user->favorite_product==null){
             $user->favorite_product=[];
         }
-
-     /* $arrays=array('olma','meva','nok');
-        $user->favorite_product=$arrays; */
 
         $old_array=$user->favorite_product;
         $old_array[]=$request->name;
         $user->favorite_product=$old_array;
         $user->save();
         return $user;
+    }
+    public function favorite_index(Request $request)
+    {
+        // auth()->user();
+        $user=User::find($request->id);
+        if($user->favorite_product==null){
+            $user->favorite_product=[];
+        }
+
+        $favorite=$user->favorite_product;
+
+        foreach ($favorite as $item) {
+
+            $products=Product::Where('id', 'like',"%$item")->paginate();
+
+            return  ProductItemResource::collection($products);
+        }
+
+        //return $user;
     }
 
     /**

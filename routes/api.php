@@ -30,7 +30,8 @@ Route::get('category',[CategoryController::class,'index']);
 Route::get('product/popular',[HomeController::class,'popular']);
 Route::get('product/item',[ProductController::class,'item']);
 Route::get('product/star',[ProductController::class,'star']);
-Route::get('product/favorite',[UserController::class,'edit_favorite']);
+Route::get('product/favorite/add',[UserController::class,'favorite_add']);
+Route::get('product/favorite/index',[UserController::class,'favorite_index']);
 
 ///search
 Route::get('search',[ProductController::class,'search']);
