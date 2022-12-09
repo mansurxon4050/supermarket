@@ -21,8 +21,9 @@ class HomeController extends Controller
     }
     public function images(){
 
-        $product = Image::all()->paginate();
-        return ImageResource::collection($product);
+return 'salom';
+       /* $product = Image::all()->paginate();
+        return ImageResource::collection($product);*/
     }
       public function news(){
 
