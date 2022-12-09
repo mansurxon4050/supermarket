@@ -22,8 +22,7 @@ class HomeController extends Controller
     public function images(){
 
         $product = Image::all();
-        return  $product;
-        /*return ImageResource::collection($product);*/
+        return ImageResource::collection($product);
     }
       public function news(){
 
