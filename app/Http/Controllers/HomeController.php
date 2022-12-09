@@ -20,9 +20,8 @@ class HomeController extends Controller
         return HomeResource::collection($product);
     }
     public function images(){
-
-        $product = Image::all();
-        return ImageResource::collection($product);
+        $image=Image::all();
+        return ImageResource::collection($image);
     }
       public function news(){
 
