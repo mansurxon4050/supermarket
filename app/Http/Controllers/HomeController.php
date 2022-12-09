@@ -15,14 +15,14 @@ class HomeController extends Controller
 {
 
     public function popular(){
-         $product = Image::all()->paginate();
-                return ImageResource::collection($product);
-
-    }
-    public function image(){
 
         $product = Product::where('star','>','0')->paginate();
         return HomeResource::collection($product);
+    }
+    public function images(){
+
+        $product = Image::all()->paginate();
+        return ImageResource::collection($product);
     }
       public function news(){
 
