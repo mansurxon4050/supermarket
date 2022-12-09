@@ -19,7 +19,7 @@ class HomeController extends Controller
         $product = Product::where('star','>','0')->paginate();
         return HomeResource::collection($product);
     }
-    public function images(){
+    public function image(){
 
 return 'salom';
        /* $product = Image::all()->paginate();
