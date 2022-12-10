@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('sold',[ProductController::class,'sold']);
 
 /// category
 Route::get('category/products',[ProductController::class,'index']);

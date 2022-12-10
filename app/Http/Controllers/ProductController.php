@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductItemResource;
 use App\Models\Product;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    public function sold(Request $request){
+
+    return Response('success',200)->json($request);
+
+    }
 
     public function index(Request $request){
 
