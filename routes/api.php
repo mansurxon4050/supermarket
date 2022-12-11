@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HistorySoldController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('product/sold',[ProductController::class,'sold']);
+Route::post('history/sold',[HistorySoldController::class,'create']);
 
 /// category
 Route::get('category/products',[ProductController::class,'index']);

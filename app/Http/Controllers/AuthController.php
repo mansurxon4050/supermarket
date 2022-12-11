@@ -40,8 +40,6 @@ class AuthController extends Controller
 
 
     public function register(RegisterRequest $request){
-
-
         try {
             $data = $request->validated();
             $data['password'] = Hash::make($data['password']);

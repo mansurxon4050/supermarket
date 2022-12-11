@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistorySold;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
 class HistorySoldController extends Controller
@@ -21,9 +23,21 @@ class HistorySoldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $history=HistorySold::create([
+            'user_id'=>$request->user_id,
+            'payment_type'=>$request->payment_type,
+            'total_price'=>$request->total_price,
+            'address'=>$request->address,
+            'muljal'=>$request->muljal,
+            'address_phone_number'=>$request->address_phone_number,
+            'long'=>$request->long,
+            'data'=>$request->data,
+        ]);
+        $history->save();
+
+        return  Response('success',200);
     }
 
     /**
