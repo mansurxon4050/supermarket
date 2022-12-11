@@ -12,7 +12,7 @@ class ProductController extends Controller
 
     public function sold(Request $request){
 
-    return $request;
+    return 'success';
 
     }
 
