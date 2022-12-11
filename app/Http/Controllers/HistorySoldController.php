@@ -22,6 +22,7 @@ class HistorySoldController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * @throws \JsonException
      */
     public function create(Request $request)
     {
@@ -33,7 +34,7 @@ class HistorySoldController extends Controller
             'muljal'=>$request->muljal,
             'address_phone_number'=>$request->address_phone_number,
             'long'=>$request->long,
-            'data'=>$request->data,
+            'data'=> json_encode($request->data, JSON_THROW_ON_ERROR),
         ]);
         $history->save();
 
