@@ -49,9 +49,10 @@ class ProductController extends Controller
     public function star_add(Request $request): \Illuminate\Http\JsonResponse
     {
         $product=Product::findOrFail($request->id);
-        $product=$product->star+$request->star;
-        $product->fill($product);
-        $product->save();
+        $productStar=$product->star;
+        $newProductStar=$product->star+$request->star;
+        $products=Product::where('id',$request->id)->update([$productStar =>  $newProductStar]);
+        $products->save();
         return response()->json(['success' => true, 'message' =>" success"]);
     }
 }
