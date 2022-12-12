@@ -62,7 +62,7 @@ class UserController extends Controller
     public function favorite_add(Request $request)
     {
         // auth()->user();
-        $user=User::find($request->id);
+        $user=User::find($request->userId);
         if($user->favorite_product==null){
             $user->favorite_product=[];
         }

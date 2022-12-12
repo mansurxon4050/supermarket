@@ -38,7 +38,7 @@ class HistorySoldController extends Controller
         ]);
         $history->save();
 
-        return response()->json(['success' => true, 'message' =>" success"]); 
+        return response()->json(['success' => true, 'message' =>" success"]);
 
     }
 

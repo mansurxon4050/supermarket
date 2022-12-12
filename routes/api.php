@@ -33,7 +33,7 @@ Route::get('product/popular',[HomeController::class,'popular']);
 Route::get('product/images',[HomeController::class,'images']);
 Route::get('product/item',[ProductController::class,'item']);
 Route::get('product/star',[ProductController::class,'star']);
-Route::get('product/favorite/add',[UserController::class,'favorite_add']);
+Route::post('product/favorite/add',[UserController::class,'favorite_add']);
 Route::get('product/favorite/index',[UserController::class,'favorite_index']);
 
 ///search
