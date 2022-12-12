@@ -57,7 +57,7 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
 
     public function favorite_add(Request $request)
@@ -72,7 +72,7 @@ class UserController extends Controller
         $old_array[]=$request->productId;
         $user->favorite_product=$old_array;
         $user->save();
-        return $user;
+        return response()->json(['success' => true, 'message' =>" success"]);
     }
     public function favorite_index(Request $request)
     {
