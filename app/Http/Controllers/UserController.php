@@ -59,6 +59,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function star_add(Request $request)
+    {
+        // auth()->user();
+        $productStar=Product::find($request->id)->get('star');
+        $productStar += $request->star;
+        $productStar->save();
+        return $productStar;
+    }
     public function favorite_add(Request $request)
     {
         // auth()->user();
