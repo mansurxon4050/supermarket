@@ -68,7 +68,7 @@ class UserController extends Controller
         }
 
         $old_array=$user->favorite_product;
-        $old_array[]=$request->name;
+        $old_array[]=$request->productId;
         $user->favorite_product=$old_array;
         $user->save();
         return $user;
