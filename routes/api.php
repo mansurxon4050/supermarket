@@ -32,8 +32,12 @@ Route::get('category',[CategoryController::class,'index']);
 Route::get('product/popular',[HomeController::class,'popular']);
 Route::get('product/images',[HomeController::class,'images']);
 Route::get('product/item',[ProductController::class,'item']);
+
+
 /// star add
-Route::get('product/star/add',[ProductController::class,'star_add']);
+Route::post('product/star/add',[ProductController::class,'star_add']);
+
+
 
 /// favorite add
 Route::post('product/favorite/add',[UserController::class,'favorite_add']);
