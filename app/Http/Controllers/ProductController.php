@@ -49,10 +49,11 @@ class ProductController extends Controller
     public function star_add(Request $request){
 
         $product=Product::find($request->id);
-        $productStar=$product->star;
+       /* $productStar=$product->star;
         $productStar+=$request->star;
-        $productStar->save();
+        $productStar->save();*/
 
-        return response()->json(['success' => true, 'message' =>" success"],200);
+        /*return response()->json(['success' => true, 'message' =>" success"],200);*/
+        return $product;
     }
 }
