@@ -46,13 +46,13 @@ class ProductController extends Controller
         return ProductItemResource::collection($products);
 
     }
-    public function star(Request $request){
+    public function star_add(Request $request){
 
         $product=Product::find($request->id);
-        $product->star=$request->star;
-        $product->save();
+        $productStar=$product->star;
+        $productStar+=$request->star;
+        $productStar->save();
 
-        return response()->json(["data"=>$product,"success"=>"success"],200);
+        return response()->json(['success' => true, 'message' =>" success"],200);
     }
-
 }
