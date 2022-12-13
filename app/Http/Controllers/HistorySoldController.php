@@ -14,7 +14,7 @@ class HistorySoldController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(Request $request)
+    public function history_index(Request $request)
     {
         $id=$request->userId;
         $products=HistorySold::find('userId',$id)->paginate();
