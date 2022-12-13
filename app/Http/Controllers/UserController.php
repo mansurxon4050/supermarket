@@ -96,11 +96,11 @@ class UserController extends Controller
         // auth()->user();
         $user=User::find($request->id);
         $newArray=[];
-
-        /*$count=count($data);
+        $data=array ($user->favorite_product);
+        $count=count($data);
         if($count>0){
         $data=$newArray;
-        }*/
+        }
 
         return $user;
 
