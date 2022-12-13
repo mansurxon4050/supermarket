@@ -5,30 +5,32 @@ namespace App\Http\Controllers;
 use App\Http\Resources\HistoryResource;
 use App\Models\HistorySold;
 use GuzzleHttp\Psr7\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class HistorySoldController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return JsonResponse|AnonymousResourceCollection
      */
     public function history_index(Request $request)
     {
         $id=$request->userId;
-        /*$products=HistorySold::find('id',$id);*/
+        $products=HistorySold::where('user_id',$id)->paginate();
         /*if($products!=null){
             return  HistoryResource::collection($products);
         }
         return  response()->json(['success'=>false,'data'=>[]]);*/
-        return  HistorySold::where('user_id',$id);
+        return  $products;
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      * @throws \JsonException
      */
     public function create(Request $request)
