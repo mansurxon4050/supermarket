@@ -20,11 +20,10 @@ class HistorySoldController extends Controller
     {
         $id=$request->userId;
         $products=HistorySold::where('user_id',$id)->paginate();
-        /*if($products!=null){
+        if($products!=null){
             return  HistoryResource::collection($products);
         }
-        return  response()->json(['success'=>false,'data'=>[]]);*/
-        return  $products;
+        return  response()->json(['success'=>false,'data'=>[]]);
     }
 
     /**
