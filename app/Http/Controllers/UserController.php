@@ -86,15 +86,8 @@ class UserController extends Controller
                 $products=Product::find($data[$i]);
             }
         }
-        return ProductItemResource::collection($products);
-        /*if($user->favorite_product==null){
-            $user->favorite_product=[];
-        }
-        $favorite=$user->favorite_product;
-        foreach ($favorite as $item) {
-            $products=Product::Where('id', $item)->paginate();
-            return  ProductItemResource::collection($products);
-        }*/
+        return ProductItemResource::collection($products->paginate());
+
 
     }
 
