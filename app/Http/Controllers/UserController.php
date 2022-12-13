@@ -86,7 +86,7 @@ class UserController extends Controller
                 $products=Product::find($data[$i])->get();
             }
         }
-
+//->get()
         return ProductItemResource::collection($products);
 
 
