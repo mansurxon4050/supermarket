@@ -44,6 +44,8 @@ Route::post('product/favorite/add',[UserController::class,'favorite_add']);
 Route::get('product/favorite/index',[UserController::class,'favorite_index']);
 Route::delete('product/favorite/delete',[UserController::class,'favorite_delete']);
 
+/// history
+Route::get('history/search',[HistorySoldController::class,'history_search']);
 ///search
 Route::get('search',[ProductController::class,'search']);
 Route::get('discount',[ProductController::class,'discount']);

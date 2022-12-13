@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\HistoryResource;
 use App\Models\HistorySold;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
@@ -39,6 +40,16 @@ class HistorySoldController extends Controller
         $history->save();
 
         return response()->json(['success' => true, 'message' =>" success"]);
+
+    }
+    public function history_search(Request $request){
+
+        $s=$request['search'];
+        $products=HistorySold::where('userId','like',"%$s%")->paginate();
+        if($products!=null){
+            return  HistoryResource::collection($products);
+        }
+        return  response()->json(['success'=>false,'data'=>[]]);
 
     }
 

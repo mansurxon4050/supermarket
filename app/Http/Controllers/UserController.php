@@ -83,10 +83,10 @@ class UserController extends Controller
         if($data==null || $data==isEmpty()){
         return  response()->json(['success'=>false,'data'=>[]]);
         }
-
-        foreach ($data as $i => $iValue) {
-            if($iValue !=null || $iValue !=isEmpty()){
-                $products=Product::find($iValue);
+        $count=count($data);
+        for($i=0;$i<$count;$i++){
+            if($data[$i]!=null || $data[$i]!=isEmpty()){
+                $products=Product::find($data[$i]);
             }
         }
         return response()->json(['success'=>true,'data'=>ProductItemResource::collection($products)]);
