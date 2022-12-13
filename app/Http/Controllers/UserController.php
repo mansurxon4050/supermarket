@@ -87,7 +87,7 @@ class UserController extends Controller
             }
         }
 
-        return ProductItemResource::collection($products)->paginate();
+        return ProductItemResource::collection($products);
 
 
     }
