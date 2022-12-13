@@ -21,18 +21,7 @@ class HistorySoldController extends Controller
         $historys=HistorySold::where('user_id',$id)->paginate();
             return  HistoryResource::collection($historys);
     }
-/*return [
-'user_id' => $this->user_id,
-'payment_type' => $this->payment_type,
-'total_price' => $this->total_price,
-'address' => $this->address,
-'muljal' => $this->muljal,
-'address_phone_number' => $this->address_phone_number,
-'long' => $this->long,
-'lat' => $this->lat,
-'data' => $this->data,
-'created_at' => $this->created_at,
-];*/
+
     /**
      * Show the form for creating a new resource.
      *
