@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\HistoryResource;
 use App\Models\HistorySold;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -19,8 +18,8 @@ class HistorySoldController extends Controller
     public function history_index(Request $request)
     {
         $id=$request->userId;
-        $products=HistorySold::where('user_id',$id)->paginate();
-            return  HistoryResource::collection($products);
+        $historys=HistorySold::where('user_id',$id)->paginate();
+            return  HistoryResource::collection($historys);
     }
 
     /**
