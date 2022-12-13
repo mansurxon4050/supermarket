@@ -98,7 +98,7 @@ class UserController extends Controller
         $newArray=[];
 
         $user->favorite_product=$newArray;
-
+        $user->save();
         return $user;
 
 
