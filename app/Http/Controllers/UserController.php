@@ -83,7 +83,7 @@ class UserController extends Controller
 
         for($i=0;$i<$count;$i++){
             if($data[$i]!=null){
-                $products=Product::find($data[$i])->paginate();
+                $products=Product::where('id',$data[$i])->paginate();
             }
         }
 
