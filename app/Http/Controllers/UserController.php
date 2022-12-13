@@ -80,11 +80,13 @@ class UserController extends Controller
         // auth()->user();
         $user=User::find($request->id);
         $data=array ($user->favorite_product);
-        $count=count($data);
+        if($data==null || $data==isEmpty()){
+        return  response()->json(['success'=>false,'data'=>[]]);
+        }
 
-        for($i=0;$i<$count;$i++){
-            if($data[$i]!=null){
-                $products=Product::find($data[$i]);
+        foreach ($data as $i => $iValue) {
+            if($iValue !=null || $iValue !=isEmpty()){
+                $products=Product::find($iValue);
             }
         }
         return response()->json(['success'=>true,'data'=>ProductItemResource::collection($products)]);
@@ -95,9 +97,9 @@ class UserController extends Controller
     {
         // auth()->user();
         $user=User::find($request->id);
-       
+        $newArray=[];
 
-        $user->favorite_product=null;
+        $user->favorite_product=$newArray;
         $user->save();
         return $user;
 
