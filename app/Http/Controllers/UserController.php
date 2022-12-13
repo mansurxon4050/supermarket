@@ -86,7 +86,11 @@ class UserController extends Controller
                 $products=Product::find($data[$i])->get();
             }
         }
+<<<<<<< HEAD
 //->get()
+=======
+
+>>>>>>> 91895835b0e5045de9b6a318c883799fa52c8765
         return ProductItemResource::collection($products);
 
 
