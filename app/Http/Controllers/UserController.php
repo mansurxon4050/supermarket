@@ -100,6 +100,7 @@ class UserController extends Controller
         $count=count($data);
         if($count>0){
         $data=$newArray;
+        $data->save();
         }
 
         return $user;
