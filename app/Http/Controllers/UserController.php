@@ -95,9 +95,9 @@ class UserController extends Controller
     {
         // auth()->user();
         $user=User::find($request->id);
-        $newArray=[];
+       
 
-        $user->favorite_product=$newArray;
+        $user->favorite_product=null;
         $user->save();
         return $user;
 
