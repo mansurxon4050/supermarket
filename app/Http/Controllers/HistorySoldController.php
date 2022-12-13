@@ -17,7 +17,7 @@ class HistorySoldController extends Controller
     public function history_index(Request $request)
     {
         $id=$request->userId;
-        $products=HistorySold::where('userId',$id)->paginate();
+        $products=HistorySold::find('user_id',$id)->paginate();
         /*if($products!=null){
             return  HistoryResource::collection($products);
         }
