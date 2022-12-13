@@ -44,8 +44,7 @@ class HistorySoldController extends Controller
     }
     public function history_search(Request $request){
 
-        $s=$request['search'];
-        $products=HistorySold::where('userId','like',"%$s%")->paginate();
+        $products=HistorySold::find('userId',$request->userId)->paginate();
         if($products!=null){
             return  HistoryResource::collection($products);
         }
