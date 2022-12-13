@@ -87,7 +87,8 @@ class UserController extends Controller
             }
         }
 
-        return ProductItemResource::collection($products);
+        return $products;
+        /*return ProductItemResource::collection($products);*/
 
 
     }
