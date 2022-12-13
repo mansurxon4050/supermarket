@@ -83,7 +83,7 @@ class UserController extends Controller
 
         for($i=0;$i<$count;$i++){
             if($data[$i]!=null){
-                $products=Product::find($data[$i])->get();
+                $products=Product::find($data[$i]);
             }
         }
         return ProductItemResource::collection($products);
