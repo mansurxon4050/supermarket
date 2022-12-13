@@ -94,7 +94,7 @@ class UserController extends Controller
      public function favorite_delete(Request $request)
     {
         // auth()->user();
-        $user=User::find($request->id)->delete();
+        $user=User::find($request->id);
         $newArray=[];
         $data=array ($user->favorite_product);
         $count=count($data);
