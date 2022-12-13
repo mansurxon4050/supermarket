@@ -95,13 +95,15 @@ class UserController extends Controller
     {
         // auth()->user();
         $user=User::find($request->id);
-        $newArray=[];
         $data=array ($user->favorite_product);
+     /*   $newArray=[];
+
         $count=count($data);
         if($count>0){
-        $data=$newArray;
+        $data=(string)$newArray;
         $data->save();
-        }
+        }*/
+        $data->delete();
 
         return $user;
 
