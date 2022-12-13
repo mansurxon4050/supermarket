@@ -86,8 +86,7 @@ class UserController extends Controller
                 $products=Product::find($data[$i]);
             }
         }
-        return $products;
-       /* return ProductItemResource::collection($products);*/
+        return ProductItemResource::collection($products);
         /*if($user->favorite_product==null){
             $user->favorite_product=[];
         }
