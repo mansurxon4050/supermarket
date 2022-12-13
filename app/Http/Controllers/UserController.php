@@ -86,10 +86,9 @@ class UserController extends Controller
                 $products=Product::find($data[$i]);
             }
         }
-        return ProductItemResource::collection($products);
+        response()->json(['success' => true, 'data' => ProductItemResource::collection($products)]);
 
-
-    }
+            }
 
     /**
      * Update the specified resource in storage.
