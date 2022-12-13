@@ -22,7 +22,7 @@ class HistorySoldController extends Controller
             return  HistoryResource::collection($products);
         }
         return  response()->json(['success'=>false,'data'=>[]]);*/
-        return  $id;
+        return  HistorySold::where('user_id',$id);
     }
 
     /**
