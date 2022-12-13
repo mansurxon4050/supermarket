@@ -6,21 +6,18 @@ use App\Http\Resources\HistoryResource;
 use App\Models\HistorySold;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class HistorySoldController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return JsonResponse|AnonymousResourceCollection
-     */
+
     public function history_index(Request $request)
     {
         $id=$request->userId;
         $historys=HistorySold::where('user_id',$id)->paginate();
             return  HistoryResource::collection($historys);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
