@@ -83,10 +83,11 @@ class UserController extends Controller
 
         for($i=0;$i<$count;$i++){
             if($data[$i]!=null){
-                $products=Product::find($data[$i]);
+                $products=Product::find($data[$i])->paginate();
             }
         }
-        return ProductItemResource::collection($products->paginate());
+
+        return ProductItemResource::collection($products);
 
 
     }
