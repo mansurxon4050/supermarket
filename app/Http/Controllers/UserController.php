@@ -80,7 +80,6 @@ class UserController extends Controller
         $user=User::find($request->id);
         $data=array ($user->favorite_product);
         $count=count($data);
-        $products =['mmm'];
 
         for($i=0;$i<$count;$i++){
             if($data[$i]!=null){
