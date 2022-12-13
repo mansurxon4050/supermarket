@@ -39,9 +39,10 @@ Route::post('product/star/add',[ProductController::class,'star_add']);
 
 
 
-/// favorite add
+/// favorite
 Route::post('product/favorite/add',[UserController::class,'favorite_add']);
 Route::get('product/favorite/index',[UserController::class,'favorite_index']);
+Route::delete('product/favorite/delete',[UserController::class,'favorite_delete']);
 
 ///search
 Route::get('search',[ProductController::class,'search']);

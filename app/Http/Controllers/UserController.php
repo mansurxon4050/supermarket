@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use JsonException;
+use function PHPUnit\Framework\isEmpty;
 
 class UserController extends Controller
 {
@@ -87,6 +88,21 @@ class UserController extends Controller
             }
         }
         return response()->json(['success'=>true,'data'=>ProductItemResource::collection($products)]);
+
+
+    }
+     public function favorite_delete(Request $request)
+    {
+        // auth()->user();
+        $user=User::find($request->id)->delete();
+        $newArray=[];
+        $data=array ($user->favorite_product);
+        $count=count($data);
+        if($count>0){
+        $data=$newArray;
+        }
+
+        return $user;
 
 
     }

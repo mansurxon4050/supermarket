@@ -20,9 +20,11 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
+/*        'email'=>'required|email|unique:users',*/
+
         return [
             'name'=>'required',
-            'email'=>'required|email|unique:users',
+            'email'=>'required',
             'avatar'=>'required',
             'phone_number'=>'numeric|unique:users|min:9',
             'password'=>'required|min:5',
