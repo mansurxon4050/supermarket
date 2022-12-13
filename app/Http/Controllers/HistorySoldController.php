@@ -12,11 +12,17 @@ class HistorySoldController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $id=$request->userId;
+        $products=HistorySold::find('userId',$id)->paginate();
+        /*if($products!=null){
+            return  HistoryResource::collection($products);
+        }
+        return  response()->json(['success'=>false,'data'=>[]]);*/
+        return  $products;
     }
 
     /**
@@ -42,15 +48,7 @@ class HistorySoldController extends Controller
         return response()->json(['success' => true, 'message' =>" success"]);
 
     }
-    public function history_search(Request $request){
 
-        $products=HistorySold::find('userId',$request->userId)->paginate();
-        if($products!=null){
-            return  HistoryResource::collection($products);
-        }
-        return  response()->json(['success'=>false,'data'=>[]]);
-
-    }
 
     /**
      * Store a newly created resource in storage.
