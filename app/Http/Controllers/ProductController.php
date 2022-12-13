@@ -43,9 +43,9 @@ class ProductController extends Controller
 
         $products=Product::Where('discount','>','0')/*->paginate()*/;
 
-        return $products;
+        /*return $products;*/
 
-        /*return ProductItemResource::collection($products);*/
+        return ProductItemResource::collection($products);
 
     }
     public function star_add(Request $request)
