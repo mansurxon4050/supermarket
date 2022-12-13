@@ -17,12 +17,12 @@ class HistorySoldController extends Controller
     public function history_index(Request $request)
     {
         $id=$request->userId;
-        $products=HistorySold::find('id',$id);
+        /*$products=HistorySold::find('id',$id);*/
         /*if($products!=null){
             return  HistoryResource::collection($products);
         }
         return  response()->json(['success'=>false,'data'=>[]]);*/
-        return  $products;
+        return  $id;
     }
 
     /**
