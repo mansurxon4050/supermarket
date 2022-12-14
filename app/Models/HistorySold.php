@@ -17,6 +17,7 @@ class HistorySold extends Model
         'address_phone_number',
         'long',
         'lat',
+        'name',
         'data'
     ];
 }
