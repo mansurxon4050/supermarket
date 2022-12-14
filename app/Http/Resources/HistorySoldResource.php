@@ -15,6 +15,7 @@ class HistorySoldResource extends JsonResource
      */
     public function toArray($request)
     {
+    /// data decode
         return [
             'user_id' => $this->user_id,
             'payment_type' => $this->payment_type,
