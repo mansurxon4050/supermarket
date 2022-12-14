@@ -101,9 +101,9 @@ class HistorySoldController extends Controller
      */
     public function history_delete(Request $request)
     {
-        $history=HistorySold::find($request->id);
+        $history=HistorySold::where('userId',$request->id);
         $newArray=[];
 
-        return $history->data;
+        return $history;
     }
 }
