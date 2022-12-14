@@ -103,7 +103,7 @@ class HistorySoldController extends Controller
     {
         $history=HistorySold::find($request->id);
         $newArray=[];
-        $historyData = json_decode($history->data, true, 512, JSON_THROW_ON_ERROR);
-        return $historyData;
+
+        return $history->data;
     }
 }
