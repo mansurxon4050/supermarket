@@ -9,8 +9,9 @@ class HistorySoldResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     * @throws \JsonException
      */
     public function toArray($request)
     {
@@ -24,7 +25,7 @@ class HistorySoldResource extends JsonResource
             'long' => $this->long,
             'lat' => $this->lat,
             'name' => $this->name,
-            'data' => $this->data,
+            'data' => json_decode($this->data, true, 512, JSON_THROW_ON_ERROR),
             'created_at' => $this->created_at,
         ];
     }
