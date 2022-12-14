@@ -14,7 +14,7 @@ class HistorySoldController extends Controller
     {
         $id=$request->userId;
         $historys=HistorySold::where('user_id',$id)->paginate();
-            return $historys;
+            return HistoryResource::collection($historys);
     }
 
 
