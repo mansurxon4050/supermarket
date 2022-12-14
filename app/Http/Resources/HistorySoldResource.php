@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
 
 class HistorySoldResource extends JsonResource
 {
@@ -27,7 +28,7 @@ class HistorySoldResource extends JsonResource
             'lat' => $this->lat,
             'name' => $this->name,
             'data' => json_decode($this->data, true, 512, JSON_THROW_ON_ERROR),
-            'created_at' => $this->created_at,
+            'created_at' => Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->locale('uz')->isoFormat('Do MMM YYYY'),
         ];
     }
 }
