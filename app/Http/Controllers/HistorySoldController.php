@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\HistorySoldResource;
 use App\Models\HistorySold;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use JsonException;
@@ -96,13 +95,13 @@ class HistorySoldController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      * @throws JsonException
      */
     public function history_delete(Request $request)
     {
         $historys=HistorySold::where('user_id',$request->id);
 
-        return $historys;
+        return response()->json(['success' => true, 'data' =>$historys]);
     }
 }
