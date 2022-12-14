@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\HistoryResource;
+use App\Http\Resources\HistorySoldResource;
 use App\Models\HistorySold;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JsonException;
 
 class HistorySoldController extends Controller
 {
 
-    public function history_index(Request $request)
+    public function history_index(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         $id=$request->userId;
         $historys=HistorySold::where('user_id',$id)->paginate();
-            return HistoryResource::collection($historys);
+            return HistorySoldResource::collection($historys);
     }
 
 
@@ -22,7 +24,7 @@ class HistorySoldController extends Controller
      * Show the form for creating a new resource.
      *
      * @return JsonResponse
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function create(Request $request)
     {
