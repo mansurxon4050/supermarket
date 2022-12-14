@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\HistorySoldResource;
 use App\Models\HistorySold;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use JsonException;
@@ -97,8 +98,12 @@ class HistorySoldController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function history_delete(Request $request)
     {
-        //
+        $user=User::find($request->id);
+        $newArray=[];
+        $user->data=$newArray;
+        $user->save();
+        return $user;
     }
 }
