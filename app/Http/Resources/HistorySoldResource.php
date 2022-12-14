@@ -23,6 +23,7 @@ class HistorySoldResource extends JsonResource
             'address_phone_number' => $this->address_phone_number,
             'long' => $this->long,
             'lat' => $this->lat,
+            'name' => $this->name,
             'data' => $this->data,
             'created_at' => $this->created_at,
         ];
