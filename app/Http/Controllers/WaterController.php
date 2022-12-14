@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\WaterResource;
 use App\Models\User;
 use App\Models\Water;
 use Illuminate\Http\Request;
@@ -14,10 +13,10 @@ class WaterController extends Controller
 
     public function service(Request $request)
     {
-        $performers = Water::paginate(5);
+      /*  $performers = Water::paginate(5);
 
 
-        return WaterResource::collection($performers);
+        return WaterResource::collection($performers);*/
     }
 
     public function index()

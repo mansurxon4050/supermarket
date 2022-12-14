@@ -53,9 +53,6 @@ Route::get('discount',[ProductController::class,'discount']);
 // person
 Route::get('news',[HomeController::class,'news']);
 
-
-Route::get('waters',[WaterController::class,'service']);
-
 /// register
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);

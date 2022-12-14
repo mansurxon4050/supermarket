@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\HistorySoldResource;
 use App\Models\HistorySold;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -10,25 +11,11 @@ use JsonException;
 class HistorySoldController extends Controller
 {
 
-    public function history_index(Request $request): array
+    public function history_index(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         $id=$request->userId;
         $historys=HistorySold::where('user_id',$id)->paginate();
-
-        return [
-
-            'user_id' => $historys->user_id,
-            'payment_type' => $historys->payment_type,
-            'total_price' => $historys->total_price,
-            'address' => $historys->address,
-            'muljal' => $historys->muljal,
-            'address_phone_number' => $historys->address_phone_number,
-            'long' => $historys->long,
-            'lat' => $historys->lat,
-            'data' => $historys->data,
-            'created_at' => $historys->created_at,
-        ];
-
+            return HistorySoldResource::collection($historys);
     }
 
 
