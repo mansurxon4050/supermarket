@@ -46,7 +46,7 @@ Route::delete('product/favorite/delete',[UserController::class,'favorite_delete'
 
 /// history
 Route::get('history/index',[HistorySoldController::class,'history_index']);
-Route::get('history/delete',[HistorySoldController::class,'history_delete']);
+Route::delete('history/delete',[HistorySoldController::class,'history_delete']);
 ///search
 Route::get('search',[ProductController::class,'search']);
 Route::get('discount',[ProductController::class,'discount']);
