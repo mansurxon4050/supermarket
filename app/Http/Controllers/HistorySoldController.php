@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\HistoryResource;
 use App\Models\HistorySold;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class HistorySoldController extends Controller
