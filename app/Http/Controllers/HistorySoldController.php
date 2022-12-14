@@ -100,7 +100,7 @@ class HistorySoldController extends Controller
      */
     public function history_delete(Request $request)
     {
-        $user=User::find($request->id);
+        $user=HistorySold::find($request->id);
         $newArray=[];
         $user->data=$newArray;
         $user->save();
