@@ -95,15 +95,17 @@ class HistorySoldController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws JsonException
      */
     public function history_delete(Request $request)
     {
-        $user=HistorySold::find($request->id);
+        $history=HistorySold::find($request->id);
         $newArray=[];
-        $user->data=$newArray;
-        $user->save();
-        return $user;
+        /*$historyData = json_decode($history->data, true, 512, JSON_THROW_ON_ERROR);*/
+        $history->data= json_encode($newArray, JSON_THROW_ON_ERROR);
+        $history->save();
+        return $history;
     }
 }
