@@ -28,7 +28,7 @@ class HistorySoldResource extends JsonResource
             'lat' => $this->lat,
             'name' => $this->name,
             'data' => json_decode($this->data, true, 512, JSON_THROW_ON_ERROR),
-            'created_at' => Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->locale('uz')->isoFormat('Y-m-d H:i:s' ),
+            'created_at' => Carbon::createFromFormat('Y-m-d H:m:s', $this->created_at)->locale('uz')->isoFormat('Y-m-d H:m:s' ),
         ];
     }
 }
