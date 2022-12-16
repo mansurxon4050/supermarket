@@ -18,6 +18,16 @@ class HistorySoldController extends Controller
             return HistorySoldResource::collection($historys);
     }
 
+    public function history_accepted(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        $id=$request->id;
+        $historys=HistorySold::where('id',$id);
+        $historys->accepted=1;
+        $historys->accepted_time=$request->accepted_time;
+        $historys->save();
+        return  HistorySold::where('id',$id);
+    }
+
 
 
     /**
