@@ -19,8 +19,9 @@ class HomeController extends Controller
     public function popular(){
 
         $product = Product::where('star','>','0')->get();
+        $product = $product->sortBy('star');
         return $product;
-        /*$product = $product->sortBy('star');*/
+
         /*return HomeResource::collection($product->paginate());*/
 
     }
