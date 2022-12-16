@@ -14,14 +14,22 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
+
+
     public function popular(){
 
         $product = Product::where('star','>','0')->paginate();
-        $sortProduct = $product->sortBy(function($star) {
-            return $star->count();
-        });
-        return HomeResource::collection($sortProduct);
+        $product = $product->sortByDesc(function($item){
+            return $item->star();
+        })->values();
+        return HomeResource::collection($product);
+
     }
+
+
+
+
+
     public function images(){
         $image=Image::all();
         return ImageResource::collection($image);
