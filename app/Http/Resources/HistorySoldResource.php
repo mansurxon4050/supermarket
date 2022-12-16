@@ -17,6 +17,7 @@ class HistorySoldResource extends JsonResource
     {
     /// data decode
         return [
+            'id' => $this->id,
             'user_id' => $this->user_id,
             'payment_type' => $this->payment_type,
             'total_price' => $this->total_price,
