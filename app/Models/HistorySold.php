@@ -18,7 +18,6 @@ class HistorySold extends Model
         'long',
         'lat',
         'name',
-        'accepted',
         'accepted_time',
         'order_time',
         'data'
