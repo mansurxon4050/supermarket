@@ -37,6 +37,10 @@ class HistorySoldController extends Controller
             'address_phone_number'=>$request->address_phone_number,
             'long'=>$request->long,
             'name'=>$request->name,
+            'accepted'=>$request->accepted,
+            'order_time'=>$request->order_time,
+            'accepted_time'=>$request->accepted_time,
+
             'data'=> json_encode($request->data, JSON_THROW_ON_ERROR),
         ]);
         $history->save();

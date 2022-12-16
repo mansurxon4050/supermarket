@@ -12,13 +12,15 @@ class HistorySold extends Model
         'user_id',
         'payment_type',
         'total_price',
-        'accepted',
         'address',
         'muljal',
         'address_phone_number',
         'long',
         'lat',
         'name',
+        'accepted',
+        'accepted_time',
+        'order_time',
         'data'
     ];
 }
