@@ -24,10 +24,6 @@ class HomeController extends Controller
 
     }
 
-
-
-
-
     public function images(){
         $image=Image::all();
         return ImageResource::collection($image);
