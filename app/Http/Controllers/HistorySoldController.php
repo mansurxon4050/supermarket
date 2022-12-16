@@ -23,7 +23,7 @@ class HistorySoldController extends Controller
         $id=$request->id;
         $historys=HistorySold::where('id',$id);
         $historys->accepted_time=$request->accepted_time;
-        $historys->update('accepted',1);
+        $historys->update(['accepted' => 1]);
         $historys->save();
         return  HistorySold::where('id',$id);
     }
