@@ -20,6 +20,7 @@ class HistorySoldResource extends JsonResource
             'user_id' => $this->user_id,
             'payment_type' => $this->payment_type,
             'total_price' => $this->total_price,
+            'accepted' => $this->accepted,
             'address' => $this->address,
             'muljal' => $this->muljal,
             'address_phone_number' => $this->address_phone_number,

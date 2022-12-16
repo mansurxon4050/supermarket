@@ -20,7 +20,6 @@ class HomeController extends Controller
 
         $product = Product::where('star','>','0')->paginate();
         $product = $product->sortByDesc('star');
-
         return HomeResource::collection($product);
 
     }
