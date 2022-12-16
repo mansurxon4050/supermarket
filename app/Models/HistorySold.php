@@ -12,6 +12,7 @@ class HistorySold extends Model
         'user_id',
         'payment_type',
         'total_price',
+        'accepted',
         'address',
         'muljal',
         'address_phone_number',
