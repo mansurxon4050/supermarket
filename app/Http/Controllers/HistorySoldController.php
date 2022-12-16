@@ -18,7 +18,7 @@ class HistorySoldController extends Controller
             return HistorySoldResource::collection($historys);
     }
 
-    public function history_accepted(Request $request): JsonResponse
+    public function history_accepted(Request $request)
     {
         $historys=HistorySold::where('id',$request->id)->update(['accepted_time'=>$request->accepted_time]);
         return $historys;
