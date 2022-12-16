@@ -22,11 +22,11 @@ class HistorySoldController extends Controller
     {
         $id=$request->id;
         $historys=HistorySold::where('id',$id);
+        $historys->accepted_time=$request->accepted_time;
         $historys->update(['accepted' => '1']);
-        $historys->update(['accepted_time' => $request->accepted_time]);
         $historys->save();
-        return  HistorySold::where('id',$id);
-       /* return response()->json(['success' => true, 'message' =>" success"]);*/
+        return HistorySold::where('id',$id);
+        /*return response()->json(['success' => true, 'message' =>" success"]);*/
     }
 
 
