@@ -18,11 +18,11 @@ class HomeController extends Controller
 
     public function popular(){
 
-        $product = Product::where('star','>','0')->paginate();
+        $product = Product::where('star','>','0');
         $product = $product->sortByDesc(function($item){
             return $item->star();
         })->values();
-        return HomeResource::collection($product);
+        return HomeResource::collection($product->paginate());
 
     }
 
