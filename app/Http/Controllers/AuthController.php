@@ -24,17 +24,21 @@ class AuthController extends Controller
     }
     public  function update_password(Request $request){
 
-        $user=User::where('email',$request->input('email'))->get();
+        #Match The Old Password
 
-        $user->password = $request->get('password');
-        $user->save();
+        if(!Hash::check($request->password, auth()->user()->newPassword)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->newPassword)
+        ]);
+
         return response()->json([
             'success' => true,
-            'data' => [
-                'password' => 'password updated successfully',
-                'password'=>$user->password
-            ]
+                'message' => 'password updated successfully',
         ]);
+
 
     }
 

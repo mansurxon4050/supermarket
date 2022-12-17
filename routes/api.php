@@ -59,14 +59,15 @@ Route::get('news',[HomeController::class,'news']);
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('update_check',[AuthController::class,'update_check']);
-Route::post('update_password',[AuthController::class,'update_password']);
 Route::post('upload',[ImageController::class,'upload']);
 
 Route::middleware('auth:sanctum')->group(function (){
     Route::get('me',[AuthController::class,'user']);
     Route::post('logout',[AuthController::class,'logout']);
+    Route::post('update_password',[AuthController::class,'update_password']);
 
-   // Route::apiResource('waters',WaterController::class);
+
+    // Route::apiResource('waters',WaterController::class);
     /*
     Route::get('users',[UserController::class,'index']);
     Route::post('users',[UserController::class,'store']);
