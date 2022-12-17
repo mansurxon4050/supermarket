@@ -26,7 +26,7 @@ class AuthController extends Controller
 
         #Match The Old Password
 
-        if(!Hash::check($request->password, auth()->user()->newPassword)){
+        if(!Hash::check($request->password, auth()->user()->password)){
             return back()->with("error", "Old Password Doesn't match!");
         }
         #Update the new Password
