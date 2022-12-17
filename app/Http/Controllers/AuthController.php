@@ -25,8 +25,19 @@ class AuthController extends Controller
     public  function update_password(Request $request){
 
         #Match The Old Password
+        $user=$request->user();
+        if(Hash::check($request->password,$user->password)){
+            $user->update([
+            'password'=>Hash::make($request->newPassword)
+            ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'password updated successfully',
+            ]);
 
-        if(!Hash::check($request->password, Auth::user()->password)){
+        }
+        auth()->user()->update(['password' => Hash::make($request->password) ]);
+        /*if(!Hash::check($request->password, auth()->user()->password)){
             return back()->with("error", "Old Password Doesn't match!");
         }
         #Update the new Password
@@ -34,10 +45,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->newPassword)
         ]);
 
-        return response()->json([
-            'success' => true,
-                'message' => 'password updated successfully',
-        ]);
+        */
        // return $user = Auth::user();
        // return $request->user();
 
