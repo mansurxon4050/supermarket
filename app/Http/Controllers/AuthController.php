@@ -39,7 +39,7 @@ class AuthController extends Controller
                 'message' => 'password updated successfully',
         ]);*/
 
-        return auth()->user();
+        return $request->user();
 
     }
 
