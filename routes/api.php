@@ -60,11 +60,11 @@ Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('update_check',[AuthController::class,'update_check']);
 Route::post('upload',[ImageController::class,'upload']);
-Route::post('update_password',[AuthController::class,'update_password']);
 
 Route::middleware('auth:sanctum')->group(function (){
     Route::get('me',[AuthController::class,'user']);
     Route::post('logout',[AuthController::class,'logout']);
+    Route::get('update_password',[AuthController::class,'update_password']);
 
 
     // Route::apiResource('waters',WaterController::class);
