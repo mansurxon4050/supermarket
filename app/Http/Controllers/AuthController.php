@@ -71,15 +71,14 @@ class AuthController extends Controller
     public function login(Request $request){
 
         $fields = $request->validate([
-            'email' => 'required|string',
+            'phone_number' => 'required|string',
             'password' => 'required|string ',
         ]);
         // Check email
-        $user = User::where('email',$fields['email'] )->first();
+        $user = User::where('phone_number',$fields['phone_number'] )->first();
         // Check passwords
         if(!$user || !Hash::check($fields['password'],$user->password)){
-
-            return response(['message' =>'Bad creds'],401);
+            return response()->json(['success' => false, 'message' =>"Bad creds"]);
         }
 
         $token = $user->createToken('api_token')->plainTextToken;
