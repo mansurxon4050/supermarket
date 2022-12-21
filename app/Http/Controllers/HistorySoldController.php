@@ -21,7 +21,7 @@ class HistorySoldController extends Controller
     }
     public function historyAll(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
-        $histories=HistorySold::all()->paginate();
+        $histories=HistorySold::where()->paginate();
         $histories=$histories->sortByDesc('id');
         return HistorySoldResource::collection($histories);
     }
