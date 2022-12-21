@@ -78,7 +78,7 @@ class AuthController extends Controller
         $user = User::where('phone_number',$fields['phone_number'] )->first();
         // Check passwords
         if(!$user || !Hash::check($fields['password'],$user->password)){
-            return response()->json(['success' => false, 'message' =>"Bad creds"]);
+            return response()->json(['success' => false, 'message' =>"Bad creds"],401);
         }
 
         $token = $user->createToken('api_token')->plainTextToken;

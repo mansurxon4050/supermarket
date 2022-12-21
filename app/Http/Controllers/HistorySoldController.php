@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\HistorySoldResource;
+use App\Http\Resources\HomeResource;
 use App\Models\HistorySold;
+use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use JsonException;
@@ -16,6 +18,12 @@ class HistorySoldController extends Controller
         $id=$request->userId;
         $historys=HistorySold::where('user_id',$id)->paginate();
             return HistorySoldResource::collection($historys);
+    }
+    public function historyAll(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        $histories=HistorySold::all()->paginate();
+        $histories=$histories->sortByDesc('id');
+        return HistorySoldResource::collection($histories);
     }
 
     public function history_accepted(Request $request)
