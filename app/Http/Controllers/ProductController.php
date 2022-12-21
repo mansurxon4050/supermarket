@@ -28,10 +28,10 @@ class ProductController extends Controller
         ]);
 
         $data=$request->all();
-        $filename = $request->file('product');
+        $filename = $request->file('image');
         $imagename = "products/" . $filename->getClientOriginalName();
         $filename->move(public_path() . '/storage/products/', $imagename);
-        $data['product'] = $imagename;
+        $data['image'] = $imagename;
         Product::create($data);
 
         return response()->json(['success' => true]);
