@@ -66,6 +66,8 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('me',[AuthController::class,'user']);
     Route::post('logout',[AuthController::class,'logout']);
     Route::post('update_password',[AuthController::class,'update_password']);
+    Route::get('admin/users/index',[UserController::class,'index']);
+    Route::get('admin/users/update',[UserController::class,'update_role']);
 
 
     // Route::apiResource('waters',WaterController::class);

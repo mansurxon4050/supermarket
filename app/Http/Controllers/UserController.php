@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\HistorySoldResource;
 use App\Http\Resources\ProductItemResource;
+use App\Http\Resources\UserResource;
+use App\Models\HistorySold;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,12 +17,13 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
 
     public function index()
     {
-        //
+        $users=User::orderBy('id','DESC')->paginate();
+        return UserResource::collection($users);
     }
 
     /**
@@ -110,12 +114,15 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update_role(Request $request)
     {
-        //
+        $user=User::findOrFail($request->id)->update(['roleId'=>$request->roleId]);
+        return response()->json([
+            'success' => true,
+            'message' => 'roleId updated successfully',
+        ]);
     }
 
     /**
