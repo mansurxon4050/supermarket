@@ -68,6 +68,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('update_password',[AuthController::class,'update_password']);
     Route::get('admin/users/index',[UserController::class,'index']);
     Route::post('admin/users/update',[UserController::class,'update_role']);
+    Route::get('admin/product/index',[ProductController::class,'index_all']);
 
 
     // Route::apiResource('waters',WaterController::class);

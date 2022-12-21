@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
+
+    public function index_all(){
+        $products=Product::orderBy('id','DESC')->paginate();
+        return ProductItemResource::collection($products);
+    }
+
     public function sold(Request $request){
 
     return $request;
