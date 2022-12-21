@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function create_product(Request $request){
 
         $request->validate([
-            'avatar' => 'required|image',
+            'image' => 'required|image',
             'name'=> 'required',
             'star'=> 'required',
             'info'=> 'required',
