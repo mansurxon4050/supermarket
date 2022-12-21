@@ -11,6 +11,33 @@ class ProductController extends Controller
 {
 
 
+    public function create_product(Request $request){
+
+        $request->validate([
+            'avatar' => 'required|image',
+            'name'=> 'required',
+            'star'=> 'required',
+            'info'=> 'required',
+            'description'=> 'required',
+            'category'=> 'required',
+            'type'=> 'required',
+            'price'=> 'required',
+            'discount'=> 'required',
+            'discount_price'=> 'required',
+            'count'=> 'required'
+        ]);
+
+        $data=$request->all();
+        $filename = $request->file('product');
+        $imagename = "products/" . $filename->getClientOriginalName();
+        $filename->move(public_path() . '/storage/products/', $imagename);
+        $data['product'] = $imagename;
+        Product::create($data);
+
+        return response()->json(['success' => true]);
+    }
+
+
     public function index_all(){
         $products=Product::orderBy('id','DESC')->paginate();
         return ProductItemResource::collection($products);
