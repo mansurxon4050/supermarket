@@ -19,7 +19,7 @@ class User extends \TCG\Voyager\Models\User
         'password',
         'phone_number',
         'avatar',
-        'role_id',
+        'roleId',
         'history_cart',
         'favorite_product',
         'chat',
