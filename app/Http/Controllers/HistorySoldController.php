@@ -19,10 +19,10 @@ class HistorySoldController extends Controller
         $historys=HistorySold::where('user_id',$id)->paginate();
             return HistorySoldResource::collection($historys);
     }
-    public function historyAll(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    public function historyAll(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
-        $histories=HistorySold::where('data','>','0')->paginate();
-        $histories=$histories->sortByDesc('id');
+        $histories=HistorySold::where('data','>','0');
+        $histories=$histories->sortByDesc('id')->paginate(3);
         return HistorySoldResource::collection($histories);
     }
 
