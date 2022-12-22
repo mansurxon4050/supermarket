@@ -49,7 +49,7 @@ class CategoryController extends Controller
             'image' => 'required|image',
         ]);
         $banner=Banner::find($request->id);
-        $destination = 'storage/' . $banner->image;
+        $destination = 'storage/banners' . $banner->image;
         if (File::exists($destination)) {
             File::delete($destination);
         }
