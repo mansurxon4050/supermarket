@@ -69,7 +69,6 @@ class CategoryController extends Controller
         $request->validate([
             'id' => 'required',
             'name' => 'required',
-            'image' => 'required|image',
         ]);
         Category::find($request->id)->update([
             'name'=>  request('name'),
