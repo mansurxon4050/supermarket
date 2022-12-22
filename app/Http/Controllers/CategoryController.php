@@ -56,7 +56,7 @@ class CategoryController extends Controller
         }
         $imagename = "banners/" . $filename->getClientOriginalName();
         $filename->move(public_path() . '/storage/banners/', $imagename);
-        Banner::update([
+        Banner::find($request->id)->update([
             'image' => $imagename,
         ]);
         return response()->json(['success' => true]);
