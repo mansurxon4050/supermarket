@@ -68,7 +68,7 @@ class ProductController extends Controller
         ]);
         $data=$request->all();
         $product=Product::find($request->id);
-        if($request->image==null || $request->image. isEmpty()->__toString()){
+        if($request->image==null){
             Product::update([
                 'name'=>  request('name'),
                 'star'=>  request('star'),
