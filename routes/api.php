@@ -71,6 +71,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('admin/product/index',[ProductController::class,'index_all']);
     Route::post('admin/product/create',[ProductController::class,'create_product']);
     Route::post('admin/product/update',[ProductController::class,'update_product']);
+    Route::post('admin/product/update_str',[ProductController::class,'update_productNoImage']);
 
 
     // Route::apiResource('waters',WaterController::class);
