@@ -16,6 +16,7 @@ class HomeResource extends JsonResource
     public function toArray($request)
     {
     $banners=Banner::get('image');
+    $bannerId=Banner::get('id');
         return [
             'id'=>$this->id,
             'name'=>$this->name,
@@ -24,6 +25,7 @@ class HomeResource extends JsonResource
             'star'=>$this->star,
             'info'=>$this->info,
             'banners'=>$banners,
+            'bannerId'=>$bannerId,
             ];
     }
 }

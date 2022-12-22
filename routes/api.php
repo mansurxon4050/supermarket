@@ -33,11 +33,8 @@ Route::get('product/popular',[HomeController::class,'popular']);
 Route::get('product/images',[HomeController::class,'images']);
 Route::get('product/item',[ProductController::class,'item']);
 
-
 /// star add
 Route::post('product/star/add',[ProductController::class,'star_add']);
-
-
 
 /// favorite
 Route::post('product/favorite/add',[UserController::class,'favorite_add']);
@@ -77,6 +74,8 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('admin/category/update',[CategoryController::class,'category_update']);
     Route::post('admin/category/update_str',[CategoryController::class,'category_updateNoImage']);
     Route::delete('admin/category/delete',[CategoryController::class,'delete_category']);
+    Route::post('admin/banner/add',[CategoryController::class,'banner_add']);
+    Route::post('admin/banner/update',[CategoryController::class,'banner_update']);
 
 
     // Route::apiResource('waters',WaterController::class);

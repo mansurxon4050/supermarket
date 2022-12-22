@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\CategoryResource;
+use App\Models\Banner;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -27,7 +28,41 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function category_add(Request $request)
+    public function banner_add(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image',
+        ]);
+        $filename = $request->file('image');
+        $imagename = "banners/" . $filename->getClientOriginalName();
+        $filename->move(public_path() . '/storage/banners/', $imagename);
+        Banner::create([
+            'image' => $imagename,
+        ]);
+        return response()->json(['success' => true]);
+
+    }
+    public function banner_update(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            'image' => 'required|image',
+        ]);
+        $filename = $request->file('image');
+        $banner=Banner::find($request->id);
+        $destination = 'storage/' . $banner->image;
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
+        $imagename = "banners/" . $filename->getClientOriginalName();
+        $filename->move(public_path() . '/storage/banners/', $imagename);
+        Banner::update([
+            'image' => $imagename,
+        ]);
+        return response()->json(['success' => true]);
+
+    }
+        public function category_add(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -121,8 +156,5 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+
 }
