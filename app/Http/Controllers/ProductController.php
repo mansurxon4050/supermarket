@@ -14,7 +14,6 @@ class ProductController extends Controller
 
     public function delete_product(Request $request): \Illuminate\Http\JsonResponse
     {
-
         Product::find($request->id)->delete();
         return response()->json(['success' => true]);
 
