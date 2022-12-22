@@ -72,7 +72,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('admin/product/create',[ProductController::class,'create_product']);
     Route::post('admin/product/update',[ProductController::class,'update_product']);
     Route::post('admin/product/update_str',[ProductController::class,'update_productNoImage']);
-    Route::post('admin/product/delete',[ProductController::class,'delete_product']);
+    Route::delete('admin/product/delete',[ProductController::class,'delete_product']);
 
 
     // Route::apiResource('waters',WaterController::class);
