@@ -79,11 +79,12 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function delete_category(Request $request)
     {
-        //
+        Category::find($request->id)->delete();
+        return response()->json(['success' => true]);
     }
 
     /**
