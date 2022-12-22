@@ -58,7 +58,7 @@ class CategoryController extends Controller
         $filename = $request->file('image');
         $imagename = "categories/" . $filename->getClientOriginalName();
         $filename->move(public_path() . '/storage/categories/', $imagename);
-        Category::create([
+        Category::find($request->id)->update([
             'image' => $imagename,
             'name'=>  request('name'),
         ]);
