@@ -48,19 +48,18 @@ class CategoryController extends Controller
             'id' => 'required',
             'image' => 'required|image',
         ]);
-        $filename = $request->file('image');
         $banner=Banner::find($request->id);
         $destination = 'storage/' . $banner->image;
         if (File::exists($destination)) {
             File::delete($destination);
         }
+        $filename = $request->file('image');
         $imagename = "banners/" . $filename->getClientOriginalName();
         $filename->move(public_path() . '/storage/banners/', $imagename);
         Banner::find($request->id)->update([
             'image' => $imagename,
         ]);
         return response()->json(['success' => true]);
-
     }
         public function category_add(Request $request)
     {
