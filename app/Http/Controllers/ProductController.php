@@ -32,7 +32,19 @@ class ProductController extends Controller
         $imagename = "products/" . $filename->getClientOriginalName();
         $filename->move(public_path() . '/storage/products/', $imagename);
         $data['image'] = $imagename;
-        Product::create($data);
+        Product::create([
+            'image' => $imagename,
+            'name'=>  request('name'),
+            'star'=>  request('star'),
+            'info'=>  request('info'),
+            'description'=> request('description'),
+            'category'=>  request('category'),
+            'type'=>  request('type'),
+            'price'=>  request('price'),
+            'discount'=>  request('discount'),
+            'discount_price'=> request('discount_price'),
+            'count'=>  request('count'),
+        ]);
 
         return response()->json(['success' => true]);
     }
