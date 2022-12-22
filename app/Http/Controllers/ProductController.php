@@ -69,7 +69,7 @@ class ProductController extends Controller
         $data=$request->all();
         $product=Product::find($request->id);
         if($request->image==null){
-            $product::update([
+            Product::find($request->id)->update([
                 'name'=>  request('name'),
                 'star'=>  request('star'),
                 'info'=>  request('info'),
@@ -81,7 +81,6 @@ class ProductController extends Controller
                 'discount_price'=> request('discount_price'),
                 'count'=>  request('count'),
             ]);
-            $product->save();
             return response()->json(['success' => true]);
         }
 
@@ -93,7 +92,7 @@ class ProductController extends Controller
         $imagename = "products/" . $filename->getClientOriginalName();
         $filename->move(public_path() . '/storage/products/', $imagename);
         $data['image'] = $imagename;
-        $product::update([
+        Product::find($request->id)->update([
             'image' => $imagename,
             'name'=>  request('name'),
             'star'=>  request('star'),
@@ -106,7 +105,6 @@ class ProductController extends Controller
             'discount_price'=> request('discount_price'),
             'count'=>  request('count'),
         ]);
-        $product->save();
 
         return response()->json(['success' => true]);
     }
