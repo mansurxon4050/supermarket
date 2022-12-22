@@ -63,15 +63,16 @@ Route::post('update_check',[AuthController::class,'update_check']);
 Route::post('upload',[ImageController::class,'upload']);
 
 Route::middleware('auth:sanctum')->group(function (){
-    Route::get('me',[AuthController::class,'user']);
+    Route::get( 'me',[AuthController::class,'user']);
     Route::post('logout',[AuthController::class,'logout']);
     Route::post('update_password',[AuthController::class,'update_password']);
-    Route::get('admin/users/index',[UserController::class,'index']);
+    Route::get( 'admin/users/index',[UserController::class,'index']);
     Route::post('admin/users/update',[UserController::class,'update_role']);
-    Route::get('admin/product/index',[ProductController::class,'index_all']);
+    Route::get( 'admin/product/index',[ProductController::class,'index_all']);
     Route::post('admin/product/create',[ProductController::class,'create_product']);
     Route::post('admin/product/update',[ProductController::class,'update_product']);
     Route::post('admin/product/update_str',[ProductController::class,'update_productNoImage']);
+    Route::post('admin/product/delete',[ProductController::class,'delete_product']);
 
 
     // Route::apiResource('waters',WaterController::class);
