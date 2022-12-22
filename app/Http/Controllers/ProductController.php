@@ -54,7 +54,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'image' => 'required|image',
-            'id'=> 'id',
+            'id'=> 'required',
             'name'=> 'required',
             'star'=> 'required',
             'info'=> 'required',
