@@ -70,6 +70,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('admin/users/update',[UserController::class,'update_role']);
     Route::get('admin/product/index',[ProductController::class,'index_all']);
     Route::post('admin/product/create',[ProductController::class,'create_product']);
+    Route::post('admin/product/update',[ProductController::class,'update_product']);
 
 
     // Route::apiResource('waters',WaterController::class);

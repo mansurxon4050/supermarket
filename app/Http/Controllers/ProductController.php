@@ -6,6 +6,8 @@ use App\Http\Resources\ProductItemResource;
 use App\Models\Product;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller
 {
@@ -33,6 +35,64 @@ class ProductController extends Controller
         $filename->move(public_path() . '/storage/products/', $imagename);
         $data['image'] = $imagename;
         Product::create([
+            'image' => $imagename,
+            'name'=>  request('name'),
+            'star'=>  request('star'),
+            'info'=>  request('info'),
+            'description'=> request('description'),
+            'category'=>  request('category'),
+            'type'=>  request('type'),
+            'price'=>  request('price'),
+            'discount'=>  request('discount'),
+            'discount_price'=> request('discount_price'),
+            'count'=>  request('count'),
+        ]);
+
+        return response()->json(['success' => true]);
+    }
+    public function update_product(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $request->validate([
+            'image' => 'required|image',
+            'id'=> 'id',
+            'name'=> 'required',
+            'star'=> 'required',
+            'info'=> 'required',
+            'description'=> 'required',
+            'category'=> 'required',
+            'type'=> 'required',
+            'price'=> 'required',
+            'discount'=> 'required',
+            'discount_price'=> 'required',
+            'count'=> 'required'
+        ]);
+        $data=$request->all();
+        $product=Product::find($request->id);
+        if($request->image==null || $request->image. isEmpty()->__toString()){
+            Product::update([
+                'name'=>  request('name'),
+                'star'=>  request('star'),
+                'info'=>  request('info'),
+                'description'=> request('description'),
+                'category'=>  request('category'),
+                'type'=>  request('type'),
+                'price'=>  request('price'),
+                'discount'=>  request('discount'),
+                'discount_price'=> request('discount_price'),
+                'count'=>  request('count'),
+            ]);
+            return response()->json(['success' => true]);
+        }
+
+        $destination = 'storage/' . $product->image;
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
+        $filename = $request->file('image');
+        $imagename = "products/" . $filename->getClientOriginalName();
+        $filename->move(public_path() . '/storage/products/', $imagename);
+        $data['image'] = $imagename;
+        Product::update([
             'image' => $imagename,
             'name'=>  request('name'),
             'star'=>  request('star'),
