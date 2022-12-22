@@ -73,6 +73,9 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('admin/product/update',[ProductController::class,'update_product']);
     Route::post('admin/product/update_str',[ProductController::class,'update_productNoImage']);
     Route::delete('admin/product/delete',[ProductController::class,'delete_product']);
+    Route::post('admin/category/add',[CategoryController::class,'category_add']);
+    Route::post('admin/category/update',[CategoryController::class,'category_update']);
+    Route::post('admin/category/update',[CategoryController::class,'category_updateNoImage']);
 
 
     // Route::apiResource('waters',WaterController::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -24,13 +25,57 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function create()
+    public function category_add(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|image',
+        ]);
+        $filename = $request->file('image');
+        $imagename = "categories/" . $filename->getClientOriginalName();
+        $filename->move(public_path() . '/storage/categories/', $imagename);
+        Category::create([
+            'image' => $imagename,
+            'name'=>  request('name'),
+        ]);
+        return response()->json(['success' => true]);
 
+    }
+    public function category_update(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+            'image' => 'required|image',
+        ]);
+        $category=Category::find($request->id);
+        $destination = 'storage/' . $category->image;
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
+        $filename = $request->file('image');
+        $imagename = "categories/" . $filename->getClientOriginalName();
+        $filename->move(public_path() . '/storage/categories/', $imagename);
+        Category::create([
+            'image' => $imagename,
+            'name'=>  request('name'),
+        ]);
+        return response()->json(['success' => true]);
+    }
+        public function category_updateNoImage(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+            'image' => 'required|image',
+        ]);
+        Category::find($request->id)->update([
+            'name'=>  request('name'),
+        ]);
+        return response()->json(['success' => true]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -59,10 +104,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -71,10 +113,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
