@@ -71,6 +71,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::prefix('/admin')->group(function () {
     Route::get( '/users/index',[UserController::class,'index']);
     Route::post('/users/update',[UserController::class,'update_role']);
+    Route::post('/users/search',[UserController::class,'user_search']);
     Route::get( '/product/index',[ProductController::class,'index_all']);
     Route::post('/product/create',[ProductController::class,'create_product']);
     Route::post('/product/update',[ProductController::class,'update_product']);
