@@ -12,6 +12,31 @@ use JsonException;
 
 class HistorySoldController extends Controller
 {
+    public function order_accept(Request $request): JsonResponse
+    {
+
+        $history=HistorySold::find($request->id);
+        if($request->make!=null&&$history->make==null){
+            $history->make=$request->make;
+            $history->save();
+            return response()->json(['success' => true, 'message' =>" success"]);
+        }
+
+        if($request->ready!=null && $history->make!=null && $history->ready==null){
+            $history->ready=$request->ready;
+            $history->save();
+            return response()->json(['success' => true, 'message' =>" success"]);
+        }
+
+        if($request->driver!=null && $history->ready!=null && $history->driver==null){
+            $history->ready=$request->ready;
+            $history->save();
+            return response()->json(['success' => true, 'message' =>" success"]);
+        }
+
+        return response()->json(['success' => false, 'message' =>"Bad"],500);
+
+    }
 
     public function history_index(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
@@ -31,8 +56,7 @@ class HistorySoldController extends Controller
         $historys=HistorySold::find($request->id);
         $historys->accepted_time=$request->accepted_time;
         $historys->save();
-        return $historys;
-        /*return response()->json(['success' => true, 'message' =>" success"]);*/
+        return response()->json(['success' => true, 'message' =>" success"]);
     }
 
 
@@ -67,51 +91,6 @@ class HistorySoldController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param int $id
@@ -120,7 +99,7 @@ class HistorySoldController extends Controller
      */
     public function history_delete(Request $request)
     {
-        $historys=HistorySold::where('user_id',$request->id)->delete();
+        $historys=HistorySold::where('user_id',$request->id)->update(["delete",1]);
 
         return response()->json(['success' => true, 'data' =>$historys]);
     }

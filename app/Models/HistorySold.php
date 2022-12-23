@@ -20,6 +20,10 @@ class HistorySold extends Model
         'name',
         'accepted_time',
         'order_time',
-        'data'
+        'data',
+        'make',
+        'ready',
+        'driver',
+        'delete',
     ];
 }
