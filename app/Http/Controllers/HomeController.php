@@ -30,7 +30,7 @@ class HomeController extends Controller
     }
       public function news(){
 
-        $product = NewPaper::orderBy('id','DESC');
+        $product = NewPaper::orderBy('id','DESC')->all();
         return NewPaperResource::collection($product);
 
     }
