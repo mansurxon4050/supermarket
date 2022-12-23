@@ -74,7 +74,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('admin/category/update',[CategoryController::class,'category_update']);
     Route::post('admin/category/update_str',[CategoryController::class,'category_updateNoImage']);
     Route::delete('admin/category/delete',[CategoryController::class,'delete_category']);
-    Route::get('admin/banner/index',[CategoryController::class,'banner_index']);
+    Route::get('banner/index',[CategoryController::class,'banner_index']);
     Route::post('admin/banner/add',[CategoryController::class,'banner_add']);
     Route::post('admin/banner/update',[CategoryController::class,'banner_update']);
     Route::delete('admin/banner/delete',[CategoryController::class,'banner_delete']);
