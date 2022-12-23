@@ -16,7 +16,7 @@ class HistorySoldController extends Controller
     public function history_index(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         $id=$request->userId;
-        $historys=HistorySold::where('user_id',$id)->paginate();
+        $historys=HistorySold::where('user_id',$id)->orderBy('id','DESC')->paginate();
             return HistorySoldResource::collection($historys);
     }
     public function historyAll(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
