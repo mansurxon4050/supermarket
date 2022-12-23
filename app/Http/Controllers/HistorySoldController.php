@@ -14,7 +14,7 @@ class HistorySoldController extends Controller
 {
     public function order_accept(Request $request): JsonResponse
     {
-        
+
         $history=HistorySold::find($request->id);
         if($request->make!=null){
             $history->make=$request->make;
@@ -29,7 +29,7 @@ class HistorySoldController extends Controller
         }
 
         if($request->driver!=null && $history->ready!=null && $history->driver==null){
-            $history->ready=$request->ready;
+            $history->driver=$request->driver;
             $history->save();
             return response()->json(['success' => true, 'message' =>" success"]);
         }
