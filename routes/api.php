@@ -76,6 +76,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::delete('admin/category/delete',[CategoryController::class,'delete_category']);
     Route::post('admin/banner/add',[CategoryController::class,'banner_add']);
     Route::post('admin/banner/update',[CategoryController::class,'banner_update']);
+    Route::delete('admin/banner/delete',[CategoryController::class,'banner_delete']);
 
 
     // Route::apiResource('waters',WaterController::class);

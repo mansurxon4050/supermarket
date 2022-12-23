@@ -22,6 +22,12 @@ class CategoryController extends Controller
         return CategoryResource::collection($category);
 
     }
+    public function banner_delete(Request $request)
+    {
+        Banner::find($request->id)->delete();
+        return response()->json(['success' => true]);
+
+    }
 
     /**
      * Show the form for creating a new resource.
