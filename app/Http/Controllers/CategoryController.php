@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BannerResource;
 use App\Http\Resources\CategoryResource;
 use App\Models\Banner;
 use App\Models\Category;
@@ -20,6 +21,12 @@ class CategoryController extends Controller
             $category=Category::all();
 
         return CategoryResource::collection($category);
+
+    } public function banner_index()
+    {
+            $banner=Banner::all();
+
+        return BannerResource::collection($banner);
 
     }
     public function banner_delete(Request $request)
