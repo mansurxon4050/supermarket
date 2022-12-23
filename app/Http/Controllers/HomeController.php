@@ -87,4 +87,10 @@ class HomeController extends Controller
         ]);
         return response()->json(['success' => true]);
     }
+    public function news_delete(Request $request){
+
+        NewPaper::find($request->id)->delete();
+        return response()->json(['success' => true]);
+
+    }
 }

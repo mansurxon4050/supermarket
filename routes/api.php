@@ -37,9 +37,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('banner/index',[CategoryController::class,'banner_index']);
 ///News
     Route::get('news',[HomeController::class,'news']);
-    Route::post('news/add',[HomeController::class,'news_add']);
-    Route::post('news/update',[HomeController::class,'news_update']);
-    Route::post('news/update_str',[HomeController::class,'new_updateNoImage']);
+
 
 /// category
     Route::get('category/products',[ProductController::class,'index']);
@@ -85,6 +83,10 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('/banner/add',[CategoryController::class,'banner_add']);
     Route::post('/banner/update',[CategoryController::class,'banner_update']);
     Route::delete('/banner/delete',[CategoryController::class,'banner_delete']);
+    Route::post('news/add',[HomeController::class,'news_add']);
+    Route::post('news/update',[HomeController::class,'news_update']);
+    Route::post('news/update_str',[HomeController::class,'new_updateNoImage']);
+    Route::delete('news/delete',[HomeController::class,'news_delete']);
     });
 
 });
