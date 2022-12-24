@@ -8,6 +8,7 @@ use App\Models\HistorySold;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use JsonException;
 
 class HistorySoldController extends Controller
@@ -113,5 +114,12 @@ class HistorySoldController extends Controller
              return response()->json(['success' => true, 'day' => $history_day,'month'=>$history_month ]);
         }
              return response()->json(['success' => false, 'data' => 'Bad error']);
+        }
+
+          public function delete_historyDay(): JsonResponse
+      {
+
+          HistorySold::where( 'created_at', '<', Carbon::now()->subDays(32))->delete();
+             return response()->json(['success' => false, 'data' => 'success']);
         }
 }

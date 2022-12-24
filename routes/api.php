@@ -90,6 +90,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::delete('news/delete',[HomeController::class,'news_delete']);
     Route::post('order/accept',[HistorySoldController::class,'order_accept']);
     Route::post('history/cash',[HistorySoldController::class,'today_cash']);
+    Route::delete('history/day/delete',[HistorySoldController::class,'delete_historyDay']);
     });
 
 });
