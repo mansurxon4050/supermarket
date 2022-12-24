@@ -30,6 +30,7 @@ class HistorySoldResource extends JsonResource
             'make' => $this->make,
             'ready' => $this->ready,
             'driver' => $this->driver,
+            'delete' => $this->delete,
             'order_time' => $this->order_time,
             'accepted_time' => $this->accepted_time,
             'data' => json_decode($this->data, true, 512, JSON_THROW_ON_ERROR),

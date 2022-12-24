@@ -99,7 +99,7 @@ class HistorySoldController extends Controller
      */
     public function history_delete(Request $request)
     {
-        $historys=HistorySold::where('user_id',$request->id)->create(["delete"=>1]);
+        $historys=HistorySold::where('user_id',$request->id)->update(["delete"=>1]);
 
         return response()->json(['success' => true, 'data' =>$historys]);
     }
