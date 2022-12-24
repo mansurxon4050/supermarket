@@ -119,7 +119,7 @@ class HistorySoldController extends Controller
           public function delete_historyDay(): JsonResponse
       {
 
-          HistorySold::where( 'created_at', '<', Carbon::now()->subDays(32))->delete();
+          HistorySold::where( 'created_at', '<', Carbon::now()->subDays(31))->delete();
              return response()->json(['success' => false, 'data' => 'success']);
         }
 }
