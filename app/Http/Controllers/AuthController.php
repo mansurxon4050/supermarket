@@ -62,7 +62,8 @@ class AuthController extends Controller
             $user->remember_token = Str::random(60);
             $user->save();
             Auth::login($user);
-            return response()->json(['user' => auth()->user(),'api_token'=>$token]);
+            return response()->json(['user' => auth()->user(),'api_token'=>$token,'url' => "http://mansurer.beget.tech/",
+                'imageUrl' => "http://mansurer.beget.tech/storage/",]);
         } catch (ValidationException $e) {
             return response()->json(array_values($e->errors()));
         }
@@ -84,6 +85,8 @@ class AuthController extends Controller
         $token = $user->createToken('api_token')->plainTextToken;
 
         $response = [
+            'url' => "http://mansurer.beget.tech/",
+            'imageUrl' => "http://mansurer.beget.tech/storage/",
             'user' => $user,
             'token' => $token,
         ];

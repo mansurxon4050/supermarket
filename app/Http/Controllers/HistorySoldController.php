@@ -103,4 +103,10 @@ class HistorySoldController extends Controller
 
         return response()->json(['success' => true, 'data' =>$historys]);
     }
+      public function today_cash(Request $request)
+    {
+        $historys=HistorySold::whereDay('created_at', '24')->where('accepted_time','!=','null')->sum('total_price');
+
+        return response()->json(['success' => true, 'data' =>$historys]);
+    }
 }

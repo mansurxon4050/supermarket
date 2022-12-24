@@ -89,6 +89,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('news/update_str',[HomeController::class,'new_updateNoImage']);
     Route::delete('news/delete',[HomeController::class,'news_delete']);
     Route::post('order/accept',[HistorySoldController::class,'order_accept']);
+    Route::get('history/cash',[HistorySoldController::class,'today_cash']);
     });
 
 });
