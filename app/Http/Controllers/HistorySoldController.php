@@ -106,14 +106,12 @@ class HistorySoldController extends Controller
 
       public function today_cash(Request $request): JsonResponse
       {
-        if($request->day!=''){
-            $historys = HistorySold::whereDay('created_at', $request->day)->where('accepted_time','!=','null')->sum('total_price');
-             return response()->json(['success' => true, 'data' => $historys ]);
+
+        if($request->day!='' && $request->month!=''){
+            $history_day = HistorySold::whereDay('created_at', $request->day)->where('accepted_time','!=','null')->sum('total_price');
+            $history_month = HistorySold::whereMonth('created_at', $request->month)->where('accepted_time','!=','null')->sum('total_price');
+             return response()->json(['success' => true, 'day' => $history_day,'month'=>$history_month ]);
         }
-         if($request->month!=''){
-             $historys = HistorySold::whereMonth('created_at', $request->month)->where('accepted_time','!=','null')->sum('total_price');
-             return response()->json(['success' => true, 'data' => $historys ]);
-         }
-             return response()->json(['success' => true, 'data' => 'Bad error']);
+             return response()->json(['success' => false, 'data' => 'Bad error']);
         }
 }
