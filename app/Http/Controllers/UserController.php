@@ -20,7 +20,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
 
-    public function user_search(Request $request)
+    public function userMonthPrice(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        $users=User::where('month_price','>', (string)$request->month_price)->orderBy('id','DESC')->paginate();
+
+        return UserResource::collection($users);
+    }
+     public function user_search(Request $request)
     {
         $s=$request['search'];
         $users=User::where('name','like',"%$s%")

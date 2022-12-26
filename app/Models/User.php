@@ -22,7 +22,7 @@ class User extends \TCG\Voyager\Models\User
         'roleId',
         'history_cart',
         'favorite_product',
-        'chat',
+        'month_price',
         'lang'
     ];
 

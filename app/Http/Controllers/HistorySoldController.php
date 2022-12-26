@@ -6,6 +6,7 @@ use App\Http\Resources\HistorySoldResource;
 use App\Http\Resources\HomeResource;
 use App\Models\HistorySold;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -81,11 +82,19 @@ class HistorySoldController extends Controller
             'name'=>$request->name,
             'order_time'=>$request->order_time,
             'accepted_time'=>$request->accepted_time,
-
             'data'=> json_encode($request->data, JSON_THROW_ON_ERROR),
         ]);
-        $history->save();
+        $count=0;
+        $user=User::findOrFail($request->id);
+        if($user->month_price==null){
+            $user->month_price=(string)$count;
+            $user->save();
+        }
+        $count=$user->month_price+$request->total_price;
+        $user->month_price= (string)$count;
+        $user->save();
 
+        $history->save();
         return response()->json(['success' => true, 'message' =>" success"]);
 
     }
