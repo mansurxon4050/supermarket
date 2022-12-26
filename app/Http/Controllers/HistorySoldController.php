@@ -85,7 +85,7 @@ class HistorySoldController extends Controller
             'data'=> json_encode($request->data, JSON_THROW_ON_ERROR),
         ]);
         $count=0;
-        $user=User::findOrFail($request->id);
+        $user=User::findOrFail($request->user_id);
         if($user->month_price==null){
             $user->month_price=(string)$count;
             $user->save();
