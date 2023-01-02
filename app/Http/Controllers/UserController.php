@@ -22,7 +22,8 @@ class UserController extends Controller
 
     public function userMonthPrice(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
-        $users=User::where('month_price','>', $request->month_price)->orderBy('month_price','DESC')->paginate();
+        $price=$request->month_price;
+        $users=User::where('month_price','>', $price)->orderBy('month_price','DESC')->paginate();
 
         return UserResource::collection($users);
     }
