@@ -17,10 +17,17 @@ class AuthController extends Controller
 
     public function update_check(Request $request){
 
-        $user=User::where('email',$request->input('email'))->get();
+        $user=User::where('phone_number',$request->input('phone_number'))->get();
         if($user!=null){
-            return \response($user,200);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+            ]);
         }
+        return response()->json([
+            'success' => false,
+            'message' => 'you are already registered',
+        ]);
     }
     public  function update_password(Request $request){
 
