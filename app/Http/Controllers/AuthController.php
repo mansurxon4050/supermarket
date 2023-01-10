@@ -20,13 +20,13 @@ class AuthController extends Controller
         $user=User::where('phone_number',$request->input('phone_number'))->get();
         if($user!=null){
             return response()->json([
-                'success' => true,
-                'message' => 'success',
+                'success' => false,
+                'message' => 'you are already registered',
             ]);
         }
         return response()->json([
-            'success' => false,
-            'message' => 'you are already registered',
+            'success' => true,
+            'message' => 'success',
         ]);
     }
     public  function update_password(Request $request){
