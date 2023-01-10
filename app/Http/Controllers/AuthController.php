@@ -21,8 +21,8 @@ class AuthController extends Controller
         if($user!=null){
             return response()->json([
                 'success' => false,
-                'message' => 'you are already registered',
-            ]);
+                'message' => 'The phone number has already been taken',
+            ],422);
         }
         return response()->json([
             'success' => true,
