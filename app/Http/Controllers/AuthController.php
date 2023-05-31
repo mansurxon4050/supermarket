@@ -70,8 +70,8 @@ class AuthController extends Controller
             $user->save();
             Auth::login($user);
             return response()->json(['user' => auth()->user(),'api_token'=>$token,
-                'url' => "http://mansurer.beget.tech/",
-                'imageUrl' => "http://mansurer.beget.tech/storage/",]);
+                'url' => "http://mansurm9.beget.tech/",
+                'imageUrl' => "http://mansurm9.beget.tech/storage/",]);
         } catch (ValidationException $e) {
             return response()->json(array_values($e->errors()));
         }
